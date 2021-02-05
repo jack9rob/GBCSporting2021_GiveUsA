@@ -23,7 +23,19 @@ namespace GBCSporting2021_GiveUsA
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // make urls lowercase with trailing slash
+            services.AddRouting(OptionsBuilderConfigurationExtensions =>
+            {
+                OptionsBuilderConfigurationExtensions.LowercaseUrls = true;
+                OptionsBuilderConfigurationExtensions.AppendTrailingSlash = true;
+            });
+
             services.AddControllersWithViews();
+
+            /*
+            services.AddDbContext<CONTEXTNAME>(options =>
+                options.UseSqlServer(Configurations.GetConnectionString(CONTEXTNAME)));
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +62,7 @@ namespace GBCSporting2021_GiveUsA
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
             });
         }
     }
