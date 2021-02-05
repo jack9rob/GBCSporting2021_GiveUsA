@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace comp2139_assignment1.Models
+namespace GBCSporting2021_GiveUsA.Models
 {
     public class Country
     {
