@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GBCSporting2021_GiveUsA.Models
 {
@@ -21,7 +18,9 @@ namespace GBCSporting2021_GiveUsA.Models
             modelBuilder.Entity<Country>().HasData(
                     new Country { CountryId = "CAD", Name = "Canada"},
                     new Country { CountryId = "USA", Name = "United States of America"}, 
-                    new Country { CountryId = "AUS", Name = "Australia"}
+                    new Country { CountryId = "AUS", Name = "Australia"},
+                    new Country { CountryId = "MEX", Name = "MEX"},
+                    new Country { CountryId = "UK", Name = "United Kingdom"}
                 );
 
             modelBuilder.Entity<Customer>().HasData(
@@ -36,6 +35,32 @@ namespace GBCSporting2021_GiveUsA.Models
                         Email = "jack.robinson@gmail.com",
                         Phone = "123-456-7899",
                         CountryId = "CAD"
+                    },
+                    new Customer
+                    {
+                        CustomerId = 2,
+                        Firstname = "Fatih",
+                        Lastname = "Com",
+                        Address = "123 Home Drive",
+                        City = "Toronto",
+                        Province = "Ontario",
+                        Postalcode = "M4B 1G5",
+                        Email = "fatih@gmail.com",
+                        Phone = "123-456-7899",
+                        CountryId = "MEX"
+                    },
+                    new Customer
+                    {
+                        CustomerId = 3,
+                        Firstname = "Young-il",
+                        Lastname = "Kim",
+                        Address = "123 Home Drive",
+                        City = "Toronto",
+                        Province = "Ontario",
+                        Postalcode = "M4B 1G5",
+                        Email = "jack.robinson@gmail.com",
+                        Phone = "123-456-7899",
+                        CountryId = "AUS"
                     }
                 );
 
@@ -46,6 +71,21 @@ namespace GBCSporting2021_GiveUsA.Models
                         Name = "Macbook Air M1",
                         Price = 1200,
                         ReleaseDate = DateTime.Now
+                    },
+                    new Product { 
+                        ProductId = 2,
+                        Code = "BLK-COF",
+                        Name = "Black Coffee",
+                        Price = 2.50,
+                        ReleaseDate = DateTime.Now
+                    },
+                    new Product
+                    {
+                        ProductId = 3,
+                        Code = "yoga-mat",
+                        Name = "Yoga Mat",
+                        Price = 10.00,
+                        ReleaseDate = DateTime.Now
                     }
                 );
 
@@ -55,6 +95,18 @@ namespace GBCSporting2021_GiveUsA.Models
                         Name = "Alex Yoon",
                         Email = "Yoon@email.com",
                         Phone = "647-347-3345"
+                    },
+                    new Technician {
+                        TechnicianId = 2,
+                        Name = "John Doe",
+                        Email = "doe@hotmail.com",
+                        Phone = "416-774-5412"
+                    },
+                    new Technician { 
+                        TechnicianId = 3,
+                        Name = "Jane Doe",
+                        Email = "janster@gmail.com",
+                        Phone = "122-458-4775"
                     }
                 );
             modelBuilder.Entity<Incident>().HasData(
@@ -66,6 +118,25 @@ namespace GBCSporting2021_GiveUsA.Models
                         CustomerId = 1,
                         ProductId = 1,
                         TechnicianId = 1
+                    },
+                    new Incident {
+                        IncidentId = 2,
+                        Title = "Coffe spill",
+                        Description = "Coffee spilled all over me",
+                        DateOpened = DateTime.Now,
+                        CustomerId = 2,
+                        ProductId = 2,
+                        TechnicianId = 3
+                    },
+                    new Incident
+                    {
+                        IncidentId = 3,
+                        Title = "Yoga mat is wrong colour",
+                        Description = "Wrong yoga mat was delivered to me",
+                        DateOpened = DateTime.Now,
+                        CustomerId = 3,
+                        ProductId = 3,
+                        TechnicianId = 3
                     }
                 );
         }

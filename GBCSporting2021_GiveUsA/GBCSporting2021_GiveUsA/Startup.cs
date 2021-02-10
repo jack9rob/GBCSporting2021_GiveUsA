@@ -1,6 +1,8 @@
+using GBCSporting2021_GiveUsA.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,10 +34,10 @@ namespace GBCSporting2021_GiveUsA
 
             services.AddControllersWithViews();
 
-            /*
-            services.AddDbContext<CONTEXTNAME>(options =>
-                options.UseSqlServer(Configurations.GetConnectionString(CONTEXTNAME)));
-            */
+            
+            services.AddDbContext<TechnicalSupportContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("TechnicalSupportContext")));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
