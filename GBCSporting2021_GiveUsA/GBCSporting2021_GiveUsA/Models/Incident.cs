@@ -24,6 +24,7 @@ namespace GBCSporting2021_GiveUsA.Models
         public Customer Customer { get; set; }
 
         // product
+        [Required(ErrorMessage ="Product is Required")]
         public int ProductId { get; set; }
         public Product Product { get; set; }
         
