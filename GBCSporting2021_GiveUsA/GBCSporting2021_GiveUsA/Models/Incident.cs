@@ -16,7 +16,7 @@ namespace GBCSporting2021_GiveUsA.Models
         [Required(ErrorMessage = "Enter a valid date")]
         public DateTime DateOpened { get; set; }
 
-        public DateTime DateClosed { get; set; }
+        public DateTime? DateClosed { get; set; }
 
         // customer
         public int CustomerId { get; set; }
@@ -30,5 +30,7 @@ namespace GBCSporting2021_GiveUsA.Models
         // technician
         public int TechnicianId { get; set; }
         public Technician Technician { get; set; }
+
+        public string Slug => Title?.Replace(" ", "-").ToLower();
     }
 }

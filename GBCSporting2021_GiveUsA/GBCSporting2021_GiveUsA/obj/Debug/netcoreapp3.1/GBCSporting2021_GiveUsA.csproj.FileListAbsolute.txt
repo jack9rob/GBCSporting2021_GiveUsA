@@ -78,3 +78,6 @@ S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\G
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.Views.pdb
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.csproj.CopyComplete
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.genruntimeconfig.cache
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Incident\List.cshtml.g.cs
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Incident\Edit.cshtml.g.cs
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Incident\Delete.cshtml.g.cs

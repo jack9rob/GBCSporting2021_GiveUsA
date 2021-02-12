@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSporting2021_GiveUsA.Migrations
 {
     [DbContext(typeof(TechnicalSupportContext))]
-    [Migration("20210210145431_Initial")]
+    [Migration("20210212175405_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -159,7 +159,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DateClosed")
+                    b.Property<DateTime?>("DateClosed")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateOpened")
@@ -194,8 +194,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateClosed = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2021, 2, 10, 9, 54, 31, 584, DateTimeKind.Local).AddTicks(3608),
+                            DateOpened = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(5871),
                             Description = "Alex smashed by macbook because he was too jealous",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -205,8 +204,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateClosed = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2021, 2, 10, 9, 54, 31, 584, DateTimeKind.Local).AddTicks(4744),
+                            DateOpened = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(7115),
                             Description = "Coffee spilled all over me",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -216,8 +214,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 3,
                             CustomerId = 3,
-                            DateClosed = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2021, 2, 10, 9, 54, 31, 584, DateTimeKind.Local).AddTicks(4778),
+                            DateOpened = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(7150),
                             Description = "Wrong yoga mat was delivered to me",
                             ProductId = 3,
                             TechnicianId = 3,
@@ -257,7 +254,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "MAC-AIR-M1",
                             Name = "Macbook Air M1",
                             Price = 1200.0,
-                            ReleaseDate = new DateTime(2021, 2, 10, 9, 54, 31, 582, DateTimeKind.Local).AddTicks(640)
+                            ReleaseDate = new DateTime(2021, 2, 12, 12, 54, 4, 649, DateTimeKind.Local).AddTicks(4578)
                         },
                         new
                         {
@@ -265,7 +262,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "BLK-COF",
                             Name = "Black Coffee",
                             Price = 2.5,
-                            ReleaseDate = new DateTime(2021, 2, 10, 9, 54, 31, 584, DateTimeKind.Local).AddTicks(414)
+                            ReleaseDate = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(2433)
                         },
                         new
                         {
@@ -273,7 +270,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "yoga-mat",
                             Name = "Yoga Mat",
                             Price = 10.0,
-                            ReleaseDate = new DateTime(2021, 2, 10, 9, 54, 31, 584, DateTimeKind.Local).AddTicks(447)
+                            ReleaseDate = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(2468)
                         });
                 });
 

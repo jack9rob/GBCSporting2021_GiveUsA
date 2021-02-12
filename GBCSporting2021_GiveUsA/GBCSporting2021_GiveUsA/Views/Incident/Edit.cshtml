@@ -1,0 +1,52 @@
+﻿@model Incident
+@{
+}
+
+<h1>@ViewBag.Action Incident</h1>
+<form asp-action="Edit" method="Post">
+    <div asp-validation-summary="All">
+        <label asp-for="CustomerId">Customer</label>
+        <select asp-for="CustomerId">
+            <option value="">Select a Customer</option>
+            @foreach (Customer c in ViewBag.Customers)
+            {
+                <option value="@c.CustomerId">@c.Firstname @c.Lastname</option>
+            }
+        </select>
+
+        <label asp-for="ProductId">Product</label>
+        <select asp-for="ProductId">
+            <option value="">Select a Product</option>
+            @foreach (Product p in ViewBag.Products)
+            {
+                <option value="@p.ProductId">@p.Name</option>
+            }
+        </select>
+
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" />
+
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" />
+
+        <label asp-for="TechnicianId">Tehcnician</label>
+        <select asp-for="TechnicianId">
+            <option value="">Select a Technician</option>
+            @foreach (Technician t in ViewBag.Technicians)
+            {
+                <option value="@t.TechnicianId">@t.Name</option>
+            }
+        </select>
+
+        <label asp-for="DateOpened">Date Opened</label>
+        <input asp-for="DateOpened" />
+
+        <label asp-for="DateClosed">Date Closed</label>
+        <input asp-for="DateClosed" />
+
+        <input type="hidden" asp-for="IncidentId" />
+
+        <button type="submit" class="btn btn-dark">@ViewBag.Action</button>
+        <a asp-controller="Incident" asp-action="List" class="btn btn-dark">Cancel</a>
+    </div>
+</form>
