@@ -34,7 +34,9 @@ namespace GBCSporting2021_GiveUsA
 
             services.AddControllersWithViews();
 
-            
+            services.AddDbContext<CustomerContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("CustomerContext")));
+
             services.AddDbContext<TechnicalSupportContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("TechnicalSupportContext")));
             
@@ -53,11 +55,11 @@ namespace GBCSporting2021_GiveUsA
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -81,3 +81,12 @@ S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\G
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Incident\List.cshtml.g.cs
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Incident\Edit.cshtml.g.cs
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Incident\Delete.cshtml.g.cs
+C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.csprojAssemblyReference.cache
+C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.AssemblyInfoInputs.cache
+C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.AssemblyInfo.cs
+C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.csproj.CoreCompileInputs.cache
+C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.RazorAssemblyInfo.cache
+C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.RazorAssemblyInfo.cs
+C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.dll
+C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.pdb

@@ -22,18 +22,21 @@ namespace GBCSporting2021_GiveUsA.Models
         [Required(ErrorMessage = "Enter a valid city")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "Enter a valid province")]
+        [Required(ErrorMessage = "Enter a valid state")]
         public string Province { get; set; }
 
         [Required(ErrorMessage = "Enter a valid postal code")]
         public string Postalcode { get; set; }
+        [Required(ErrorMessage = "Select a country")]
+        public string CountryId { get; set; } // foreign key
+        public Country Country { get; set; } // property
 
         public string Email { get; set; } // optional
 
         public string Phone { get; set; } // optional
 
-        public string CountryId { get; set; } // foreign key
+        public string Slug => Firstname?.Replace(" ", "-").ToLower() + "-" + Lastname?.Replace(" ", "-").ToLower();
 
-        public Country Country { get; set; } // property
+
     }
 }

@@ -6690,19 +6690,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jack9\\.nuget\\packages\\": {}
+    "C:\\Users\\afafa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
+      "projectUniqueName": "C:\\Users\\afafa\\Desktop\\21GBC\\c#\\assignment1\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
       "projectName": "GBCSporting2021_GiveUsA",
-      "projectPath": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
-      "packagesPath": "C:\\Users\\jack9\\.nuget\\packages\\",
-      "outputPath": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\obj\\",
+      "projectPath": "C:\\Users\\afafa\\Desktop\\21GBC\\c#\\assignment1\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
+      "packagesPath": "C:\\Users\\afafa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\afafa\\Desktop\\21GBC\\c#\\assignment1\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jack9\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\afafa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6753,6 +6753,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.10, 3.1.10]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
