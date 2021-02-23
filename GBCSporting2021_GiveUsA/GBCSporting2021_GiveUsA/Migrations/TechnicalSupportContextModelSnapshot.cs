@@ -44,13 +44,23 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         },
                         new
                         {
+                            CountryId = "KOR",
+                            Name = "Korea"
+                        },
+                        new
+                        {
+                            CountryId = "OTHER",
+                            Name = "Other"
+                        },
+                        new
+                        {
                             CountryId = "AUS",
                             Name = "Australia"
                         },
                         new
                         {
                             CountryId = "MEX",
-                            Name = "MEX"
+                            Name = "Mexico"
                         },
                         new
                         {
@@ -145,6 +155,71 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Phone = "123-456-7899",
                             Postalcode = "M4B 1G5",
                             Province = "Ontario"
+                        },
+                        new
+                        {
+                            CustomerId = 8,
+                            Address = "Bloor 87",
+                            City = "Toronto",
+                            CountryId = "CAD",
+                            Email = "afafa82@gmail.com",
+                            Firstname = "Bruce",
+                            Lastname = "Wayne",
+                            Phone = "416-123-4567",
+                            Postalcode = "M4A Y2Y",
+                            Province = "Ontario"
+                        },
+                        new
+                        {
+                            CustomerId = 15,
+                            Address = "Sariro 52",
+                            City = "Seoul",
+                            CountryId = "KOR",
+                            Email = "afafa1234@gmail.com",
+                            Firstname = "Youngil",
+                            Lastname = "Kim",
+                            Phone = "647-689-5682",
+                            Postalcode = "213566",
+                            Province = "Seoul"
+                        },
+                        new
+                        {
+                            CustomerId = 10,
+                            Address = "Query 58",
+                            City = "Mexico City",
+                            CountryId = "MEX",
+                            Email = "hana25@gmail.com",
+                            Firstname = "Haley",
+                            Lastname = "Lee",
+                            Phone = "263-589-1254",
+                            Postalcode = "H3E Y2H",
+                            Province = "State of Mexico"
+                        },
+                        new
+                        {
+                            CustomerId = 5,
+                            Address = "Bont 81",
+                            City = "Tokyo",
+                            CountryId = "OTHER",
+                            Email = "kelly82@gmail.com",
+                            Firstname = "Kelly",
+                            Lastname = "Doll",
+                            Phone = "416-265-1478",
+                            Postalcode = "215368",
+                            Province = "Tokyo-to"
+                        },
+                        new
+                        {
+                            CustomerId = 13,
+                            Address = "Bont 81",
+                            City = "New York City",
+                            CountryId = "USA",
+                            Email = "payne12@gmail.com",
+                            Firstname = "Payne",
+                            Lastname = "Crue",
+                            Phone = "416-697-2145",
+                            Postalcode = "K9K H3M",
+                            Province = "New York"
                         });
                 });
 
@@ -193,7 +268,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateOpened = new DateTime(2021, 2, 23, 12, 18, 8, 85, DateTimeKind.Local).AddTicks(8936),
+                            DateOpened = new DateTime(2021, 2, 23, 12, 37, 50, 212, DateTimeKind.Local).AddTicks(122),
                             Description = "Alex smashed by macbook because he was too jealous",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -203,7 +278,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateOpened = new DateTime(2021, 2, 23, 12, 18, 8, 86, DateTimeKind.Local).AddTicks(75),
+                            DateOpened = new DateTime(2021, 2, 23, 12, 37, 50, 212, DateTimeKind.Local).AddTicks(1371),
                             Description = "Coffee spilled all over me",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -213,7 +288,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 3,
                             CustomerId = 3,
-                            DateOpened = new DateTime(2021, 2, 23, 12, 18, 8, 86, DateTimeKind.Local).AddTicks(106),
+                            DateOpened = new DateTime(2021, 2, 23, 12, 37, 50, 212, DateTimeKind.Local).AddTicks(1403),
                             Description = "Wrong yoga mat was delivered to me",
                             ProductId = 3,
                             TechnicianId = 3,
@@ -253,7 +328,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "MAC-AIR-M1",
                             Name = "Macbook Air M1",
                             Price = 1200.0,
-                            ReleaseDate = new DateTime(2021, 2, 23, 12, 18, 8, 83, DateTimeKind.Local).AddTicks(8108)
+                            ReleaseDate = new DateTime(2021, 2, 23, 12, 37, 50, 209, DateTimeKind.Local).AddTicks(9409)
                         },
                         new
                         {
@@ -261,7 +336,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "BLK-COF",
                             Name = "Black Coffee",
                             Price = 2.5,
-                            ReleaseDate = new DateTime(2021, 2, 23, 12, 18, 8, 85, DateTimeKind.Local).AddTicks(5723)
+                            ReleaseDate = new DateTime(2021, 2, 23, 12, 37, 50, 211, DateTimeKind.Local).AddTicks(6724)
                         },
                         new
                         {
@@ -269,7 +344,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "yoga-mat",
                             Name = "Yoga Mat",
                             Price = 10.0,
-                            ReleaseDate = new DateTime(2021, 2, 23, 12, 18, 8, 85, DateTimeKind.Local).AddTicks(5753)
+                            ReleaseDate = new DateTime(2021, 2, 23, 12, 37, 50, 211, DateTimeKind.Local).AddTicks(6752)
                         });
                 });
 
