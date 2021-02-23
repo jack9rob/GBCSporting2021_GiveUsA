@@ -7,25 +7,25 @@ namespace GBCSporting2021_GiveUsA.Controllers
 {
     public class CustomerController : Controller
     {
-        public CustomerContext cusContext { get; set; }
-        public CustomerController(CustomerContext ctx)
+        public TechnicalSupportContext context { get; set; }
+        public CustomerController(TechnicalSupportContext ctx)
         {
-            cusContext = ctx;
+            context = ctx;
         }
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            ViewBag.Country = cusContext.Countries.OrderBy(c => c.Name).ToList();
+            ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
             return View("Edit", new Customer());
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.Country = cusContext.Countries.OrderBy(c => c.Name).ToList();
-            var country = cusContext.Countries.Find(id);
-            return View(country);
+            ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
+            var customer = context.Customers.Include(c => c.Country).FirstOrDefault(c => c.CustomerId == id);
+            return View(customer);
         }
         [HttpPost]
         public IActionResult Edit(Customer customer)
@@ -33,36 +33,36 @@ namespace GBCSporting2021_GiveUsA.Controllers
             if (ModelState.IsValid)
             {
                 if(customer.CustomerId == 0)
-                    cusContext.Customers.Add(customer);
+                    context.Customers.Add(customer);
                 else
-                    cusContext.Customers.Update(customer);
-                    cusContext.SaveChanges();
+                    context.Customers.Update(customer);
+                    context.SaveChanges();
                     return RedirectToAction("Index", "Customer");
                 
             }
             else
             {
                 ViewBag.Action = (customer.CustomerId == 0) ? "Add" : "Edit";
-                ViewBag.Countries = cusContext.Countries.OrderBy(c => c.Name).ToList();
+                ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
                 return View(customer);
             }
         }
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var customer = cusContext.Customers.Find(id);
+            var customer = context.Customers.Find(id);
             return View(customer);
         }
         [HttpPost]
         public IActionResult Delete(Customer customer)
         {
-            cusContext.Customers.Remove(customer);
-            cusContext.SaveChanges();
+            context.Customers.Remove(customer);
+            context.SaveChanges();
             return RedirectToAction("Index", "Customer");
         }
         public IActionResult Index()
         {
-            var customers = cusContext.Customers
+            var customers = context.Customers
                 .Include(c => c.Country)
                 .ToList();
             return View(customers);

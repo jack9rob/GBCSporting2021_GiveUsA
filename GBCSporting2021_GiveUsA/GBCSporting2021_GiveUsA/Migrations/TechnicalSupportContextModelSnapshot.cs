@@ -75,6 +75,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CountryId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
@@ -192,7 +193,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateOpened = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(5871),
+                            DateOpened = new DateTime(2021, 2, 23, 12, 18, 8, 85, DateTimeKind.Local).AddTicks(8936),
                             Description = "Alex smashed by macbook because he was too jealous",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -202,7 +203,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateOpened = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(7115),
+                            DateOpened = new DateTime(2021, 2, 23, 12, 18, 8, 86, DateTimeKind.Local).AddTicks(75),
                             Description = "Coffee spilled all over me",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -212,7 +213,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 3,
                             CustomerId = 3,
-                            DateOpened = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(7150),
+                            DateOpened = new DateTime(2021, 2, 23, 12, 18, 8, 86, DateTimeKind.Local).AddTicks(106),
                             Description = "Wrong yoga mat was delivered to me",
                             ProductId = 3,
                             TechnicianId = 3,
@@ -252,7 +253,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "MAC-AIR-M1",
                             Name = "Macbook Air M1",
                             Price = 1200.0,
-                            ReleaseDate = new DateTime(2021, 2, 12, 12, 54, 4, 649, DateTimeKind.Local).AddTicks(4578)
+                            ReleaseDate = new DateTime(2021, 2, 23, 12, 18, 8, 83, DateTimeKind.Local).AddTicks(8108)
                         },
                         new
                         {
@@ -260,7 +261,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "BLK-COF",
                             Name = "Black Coffee",
                             Price = 2.5,
-                            ReleaseDate = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(2433)
+                            ReleaseDate = new DateTime(2021, 2, 23, 12, 18, 8, 85, DateTimeKind.Local).AddTicks(5723)
                         },
                         new
                         {
@@ -268,7 +269,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "yoga-mat",
                             Name = "Yoga Mat",
                             Price = 10.0,
-                            ReleaseDate = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(2468)
+                            ReleaseDate = new DateTime(2021, 2, 23, 12, 18, 8, 85, DateTimeKind.Local).AddTicks(5753)
                         });
                 });
 
@@ -323,7 +324,9 @@ namespace GBCSporting2021_GiveUsA.Migrations
                 {
                     b.HasOne("GBCSporting2021_GiveUsA.Models.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Country");
                 });

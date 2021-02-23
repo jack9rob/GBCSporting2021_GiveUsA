@@ -12,7 +12,6 @@ namespace GBCSporting2021_GiveUsA.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Technician> Technicians { get; set; }
         public DbSet<Incident> Incidents { get; set; }
-        ㅔ
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
