@@ -17,5 +17,7 @@ namespace GBCSporting2021_GiveUsA.Models
 
         [Required(ErrorMessage = "Enter a valid phone number")]
         public string Phone { get; set; }
+        public string Slug => Name?.Replace(" ", "-").ToLower() + "-" + Email?.Replace(" ", "-").ToLower();
+
     }
 }

@@ -93,3 +93,6 @@ C:\Users\afafa\Desktop\21GBC\c#\assignment1\GBCSporting2021_GiveUsA\GBCSporting2
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Delete.cshtml.g.cs
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Edit.cshtml.g.cs
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Index.cshtml.g.cs
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Technician\Delete.cshtml.g.cs
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Technician\Edit.cshtml.g.cs
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Technician\List.cshtml.g.cs
