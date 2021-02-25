@@ -192,7 +192,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateOpened = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(5871),
+                            DateOpened = new DateTime(2021, 2, 20, 22, 59, 26, 21, DateTimeKind.Local).AddTicks(4883),
                             Description = "Alex smashed by macbook because he was too jealous",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -202,7 +202,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateOpened = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(7115),
+                            DateOpened = new DateTime(2021, 2, 20, 22, 59, 26, 22, DateTimeKind.Local).AddTicks(390),
                             Description = "Coffee spilled all over me",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -212,7 +212,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 3,
                             CustomerId = 3,
-                            DateOpened = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(7150),
+                            DateOpened = new DateTime(2021, 2, 20, 22, 59, 26, 22, DateTimeKind.Local).AddTicks(510),
                             Description = "Wrong yoga mat was delivered to me",
                             ProductId = 3,
                             TechnicianId = 3,
@@ -252,7 +252,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "MAC-AIR-M1",
                             Name = "Macbook Air M1",
                             Price = 1200.0,
-                            ReleaseDate = new DateTime(2021, 2, 12, 12, 54, 4, 649, DateTimeKind.Local).AddTicks(4578)
+                            ReleaseDate = new DateTime(2021, 2, 20, 22, 59, 26, 16, DateTimeKind.Local).AddTicks(670)
                         },
                         new
                         {
@@ -260,7 +260,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "BLK-COF",
                             Name = "Black Coffee",
                             Price = 2.5,
-                            ReleaseDate = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(2433)
+                            ReleaseDate = new DateTime(2021, 2, 20, 22, 59, 26, 20, DateTimeKind.Local).AddTicks(2349)
                         },
                         new
                         {
@@ -268,7 +268,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "yoga-mat",
                             Name = "Yoga Mat",
                             Price = 10.0,
-                            ReleaseDate = new DateTime(2021, 2, 12, 12, 54, 4, 651, DateTimeKind.Local).AddTicks(2468)
+                            ReleaseDate = new DateTime(2021, 2, 20, 22, 59, 26, 20, DateTimeKind.Local).AddTicks(2441)
                         });
                 });
 

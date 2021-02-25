@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj": {}
+    "C:\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj": {}
   },
   "projects": {
-    "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj": {
+    "C:\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
+        "projectUniqueName": "C:\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
         "projectName": "GBCSporting2021_GiveUsA",
-        "projectPath": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
-        "packagesPath": "C:\\Users\\jack9\\.nuget\\packages\\",
-        "outputPath": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\obj\\",
+        "projectPath": "C:\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
+        "packagesPath": "C:\\Users\\Fat'h\\.nuget\\packages\\",
+        "outputPath": "C:\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jack9\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fat'h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,15 +44,27 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.2, )"
+              "version": "[3.1.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.12, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.2, )"
+              "version": "[3.1.12, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
             }
           },
           "imports": [
@@ -73,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
