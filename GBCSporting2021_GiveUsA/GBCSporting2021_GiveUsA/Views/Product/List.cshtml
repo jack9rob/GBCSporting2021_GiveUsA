@@ -1,0 +1,36 @@
+﻿@model List<Product>
+@{
+    ViewBag.Title = "Product Manager";
+}
+<table class="table table-bordered table-striped">
+    <thread>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Release Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Code</td>
+                <td>@product.Name</td>
+                <td>@product.Price.ToString("C2")</td>
+                <td>@product.ReleaseDate.ToString("MM/dd/yyyy")</td>
+                <td>
+                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.ProductId"
+                       asp-route-slug="@product.Slug" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.ProductId"
+                       asp-route-slug="@product.Slug" class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Product" asp-action="Add" class="btn btn-primary">Add Product</a>

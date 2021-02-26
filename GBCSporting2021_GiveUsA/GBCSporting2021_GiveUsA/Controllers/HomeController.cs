@@ -11,6 +11,9 @@ namespace GBCSporting2021_GiveUsA.Controllers
 {
     public class HomeController : Controller
     {
-        
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }

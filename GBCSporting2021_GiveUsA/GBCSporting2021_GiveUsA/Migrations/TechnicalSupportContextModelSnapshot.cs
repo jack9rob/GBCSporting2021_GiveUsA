@@ -15,9 +15,9 @@ namespace GBCSporting2021_GiveUsA.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
+                .HasAnnotation("ProductVersion", "3.1.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("GBCSporting2021_GiveUsA.Models.Country", b =>
                 {
@@ -74,7 +74,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                     b.Property<int>("CustomerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -228,7 +228,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                     b.Property<int>("IncidentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -268,7 +268,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateOpened = new DateTime(2021, 2, 23, 12, 37, 50, 212, DateTimeKind.Local).AddTicks(122),
+                            DateOpened = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(8163),
                             Description = "Alex smashed by macbook because he was too jealous",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -278,7 +278,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateOpened = new DateTime(2021, 2, 23, 12, 37, 50, 212, DateTimeKind.Local).AddTicks(1371),
+                            DateOpened = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(9339),
                             Description = "Coffee spilled all over me",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -288,7 +288,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 3,
                             CustomerId = 3,
-                            DateOpened = new DateTime(2021, 2, 23, 12, 37, 50, 212, DateTimeKind.Local).AddTicks(1403),
+                            DateOpened = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(9370),
                             Description = "Wrong yoga mat was delivered to me",
                             ProductId = 3,
                             TechnicianId = 3,
@@ -301,7 +301,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -328,7 +328,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "MAC-AIR-M1",
                             Name = "Macbook Air M1",
                             Price = 1200.0,
-                            ReleaseDate = new DateTime(2021, 2, 23, 12, 37, 50, 209, DateTimeKind.Local).AddTicks(9409)
+                            ReleaseDate = new DateTime(2021, 2, 25, 20, 37, 17, 97, DateTimeKind.Local).AddTicks(3815)
                         },
                         new
                         {
@@ -336,7 +336,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "BLK-COF",
                             Name = "Black Coffee",
                             Price = 2.5,
-                            ReleaseDate = new DateTime(2021, 2, 23, 12, 37, 50, 211, DateTimeKind.Local).AddTicks(6724)
+                            ReleaseDate = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(4567)
                         },
                         new
                         {
@@ -344,7 +344,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "yoga-mat",
                             Name = "Yoga Mat",
                             Price = 10.0,
-                            ReleaseDate = new DateTime(2021, 2, 23, 12, 37, 50, 211, DateTimeKind.Local).AddTicks(6752)
+                            ReleaseDate = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(4605)
                         });
                 });
 
@@ -353,7 +353,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                     b.Property<int>("TechnicianId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -402,8 +402,6 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("GBCSporting2021_GiveUsA.Models.Incident", b =>
@@ -425,12 +423,6 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         .HasForeignKey("TechnicianId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Technician");
                 });
 #pragma warning restore 612, 618
         }

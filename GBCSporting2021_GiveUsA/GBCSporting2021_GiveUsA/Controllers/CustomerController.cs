@@ -60,7 +60,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Customer");
         }
-        public IActionResult Index()
+        public IActionResult List()
         {
             var customers = context.Customers
                 .Include(c => c.Country)

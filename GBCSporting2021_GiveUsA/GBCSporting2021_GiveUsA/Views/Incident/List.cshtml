@@ -23,7 +23,7 @@
             <td>@incident.Title</td>
             <td>@incident.Customer.Firstname @incident.Customer.Lastname </td>
             <td>@incident.Product.Name</td>
-            <td>@incident.DateOpened</td>
+            <td>@incident.DateOpened.ToString("MM/dd/yyyy")</td>
             <td>
                 <a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-dark">Edit</a>
                 <a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-dark">Delete</a>

@@ -19,6 +19,7 @@ namespace GBCSporting2021_GiveUsA.Models
         public DateTime? DateClosed { get; set; }
 
         // customer
+        [Required(ErrorMessage = "Select a Customer")]
         public int CustomerId { get; set; }
 
         public Customer Customer { get; set; }
