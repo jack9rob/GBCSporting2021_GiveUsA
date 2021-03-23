@@ -27,11 +27,12 @@ namespace GBCSporting2021_GiveUsA.Controllers
             } 
             
             var customer = context.Customers.FirstOrDefault(c => c.CustomerId == cid);
-            ViewBag.Products = context.Products.OrderBy(p => p.Code).ToList();
-            ViewBag.Registrations = context.Registrations.OrderBy(r => r.Product.Name).ToList();
+            var products = context.Products.OrderBy(p => p.Code).ToList();
+            var registrations = context.Registrations.Where(r => r.CustomerId == cid).ToList();
 
+            var viewModel = new RegistrationViewModel { Customer = customer, Products = products, Registrations = registrations, NewRegistration = new Registration() };
 
-            return View(customer);
+            return View(viewModel);
         }
 
 
@@ -55,9 +56,23 @@ namespace GBCSporting2021_GiveUsA.Controllers
         {
             var session = new RegistrationSession(HttpContext.Session);
             var cid = session.GetId();
-            var product = context.Products.FirstOrDefault(p => p.ProductId == id);
-            var customer = context.Customers.FirstOrDefault(c => c.CustomerId == cid);
-            return View();
+            string name = context.Products.FirstOrDefault(p => p.ProductId == id).Name;
+            if (ModelState.IsValid)
+            {
+                // check if product is already registered
+                if(context.Registrations.Where(r => r.ProductId == id).ToList().Count() != 0)
+                {
+                    TempData["message"] = name + " already registered";
+                } else
+                {
+                    context.Registrations.Add(new Registration { CustomerId = cid, ProductId = id });
+                    context.SaveChanges();
+                    TempData["message"] = name + " Added!";
+                }
+
+            }
+            return RedirectToAction("Registrations");
+            
         }
         
     }
