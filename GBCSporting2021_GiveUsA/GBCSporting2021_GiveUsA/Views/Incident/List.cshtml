@@ -3,12 +3,12 @@
     ViewBag.Title = "Incident Manager";
 }
 
-<a asp-controller="Incident" asp-action="Add">Add Incident</a>
-<br />
-<br />
-<table class="table">
+<h1>Incidents</h1>
+
+<a asp-controller="Home" asp-action="Index" class="mb-2 btn btn-success">Back</a>
+<table class="table table-bordered table-striped">
     <thead>
-        <tr class="table-danger">
+        <tr>
             <th scope="col">Title</th>
             <th scope="col">Customer</th>
             <th scope="col">Product</th>
@@ -19,17 +19,19 @@
     <tbody>
         @foreach (Incident incident in Model)
         {
-        <tr>
-            <td>@incident.Title</td>
-            <td>@incident.Customer.Firstname @incident.Customer.Lastname </td>
-            <td>@incident.Product.Name</td>
-            <td>@incident.DateOpened.ToString("MM/dd/yyyy")</td>
-            <td>
-                <a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-dark">Edit</a>
-                <a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-dark">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>@incident.Title</td>
+                <td>@incident.Customer.Firstname @incident.Customer.Lastname </td>
+                <td>@incident.Product.Name</td>
+                <td>@incident.DateOpened.ToString("MM/dd/yyyy")</td>
+                <td>
+                    <a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-primary">Edit</a>
+                    <a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+<a asp-controller="Incident" asp-action="Add" class="btn btn-success">Add Incident</a>
+
 

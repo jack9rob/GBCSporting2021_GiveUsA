@@ -268,7 +268,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateOpened = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(8163),
+                            DateOpened = new DateTime(2021, 3, 22, 15, 51, 7, 934, DateTimeKind.Local).AddTicks(2842),
                             Description = "Alex smashed by macbook because he was too jealous",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -278,7 +278,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateOpened = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(9339),
+                            DateOpened = new DateTime(2021, 3, 22, 15, 51, 7, 934, DateTimeKind.Local).AddTicks(4001),
                             Description = "Coffee spilled all over me",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -288,7 +288,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 3,
                             CustomerId = 3,
-                            DateOpened = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(9370),
+                            DateOpened = new DateTime(2021, 3, 22, 15, 51, 7, 934, DateTimeKind.Local).AddTicks(4033),
                             Description = "Wrong yoga mat was delivered to me",
                             ProductId = 3,
                             TechnicianId = 3,
@@ -328,7 +328,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "MAC-AIR-M1",
                             Name = "Macbook Air M1",
                             Price = 1200.0,
-                            ReleaseDate = new DateTime(2021, 2, 25, 20, 37, 17, 97, DateTimeKind.Local).AddTicks(3815)
+                            ReleaseDate = new DateTime(2021, 3, 22, 15, 51, 7, 932, DateTimeKind.Local).AddTicks(2997)
                         },
                         new
                         {
@@ -336,7 +336,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "BLK-COF",
                             Name = "Black Coffee",
                             Price = 2.5,
-                            ReleaseDate = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(4567)
+                            ReleaseDate = new DateTime(2021, 3, 22, 15, 51, 7, 933, DateTimeKind.Local).AddTicks(9675)
                         },
                         new
                         {
@@ -344,8 +344,30 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "yoga-mat",
                             Name = "Yoga Mat",
                             Price = 10.0,
-                            ReleaseDate = new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(4605)
+                            ReleaseDate = new DateTime(2021, 3, 22, 15, 51, 7, 933, DateTimeKind.Local).AddTicks(9703)
                         });
+                });
+
+            modelBuilder.Entity("GBCSporting2021_GiveUsA.Models.Registration", b =>
+                {
+                    b.Property<int>("RegistrationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RegistrationId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Registrations");
                 });
 
             modelBuilder.Entity("GBCSporting2021_GiveUsA.Models.Technician", b =>
@@ -421,6 +443,21 @@ namespace GBCSporting2021_GiveUsA.Migrations
                     b.HasOne("GBCSporting2021_GiveUsA.Models.Technician", "Technician")
                         .WithMany()
                         .HasForeignKey("TechnicianId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("GBCSporting2021_GiveUsA.Models.Registration", b =>
+                {
+                    b.HasOne("GBCSporting2021_GiveUsA.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GBCSporting2021_GiveUsA.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

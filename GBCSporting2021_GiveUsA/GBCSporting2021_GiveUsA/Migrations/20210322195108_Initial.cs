@@ -114,6 +114,32 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Registrations",
+                columns: table => new
+                {
+                    RegistrationId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerId = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Registrations", x => x.RegistrationId);
+                    table.ForeignKey(
+                        name: "FK_Registrations_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "CustomerId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Registrations_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "CountryId", "Name" },
@@ -133,9 +159,9 @@ namespace GBCSporting2021_GiveUsA.Migrations
                 columns: new[] { "ProductId", "Code", "Name", "Price", "ReleaseDate" },
                 values: new object[,]
                 {
-                    { 1, "MAC-AIR-M1", "Macbook Air M1", 1200.0, new DateTime(2021, 2, 25, 20, 37, 17, 97, DateTimeKind.Local).AddTicks(3815) },
-                    { 2, "BLK-COF", "Black Coffee", 2.5, new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(4567) },
-                    { 3, "yoga-mat", "Yoga Mat", 10.0, new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(4605) }
+                    { 1, "MAC-AIR-M1", "Macbook Air M1", 1200.0, new DateTime(2021, 3, 22, 15, 51, 7, 932, DateTimeKind.Local).AddTicks(2997) },
+                    { 2, "BLK-COF", "Black Coffee", 2.5, new DateTime(2021, 3, 22, 15, 51, 7, 933, DateTimeKind.Local).AddTicks(9675) },
+                    { 3, "yoga-mat", "Yoga Mat", 10.0, new DateTime(2021, 3, 22, 15, 51, 7, 933, DateTimeKind.Local).AddTicks(9703) }
                 });
 
             migrationBuilder.InsertData(
@@ -166,17 +192,17 @@ namespace GBCSporting2021_GiveUsA.Migrations
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
-                values: new object[] { 1, 1, null, new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(8163), "Alex smashed by macbook because he was too jealous", 1, 1, "Macbook broke" });
+                values: new object[] { 1, 1, null, new DateTime(2021, 3, 22, 15, 51, 7, 934, DateTimeKind.Local).AddTicks(2842), "Alex smashed by macbook because he was too jealous", 1, 1, "Macbook broke" });
 
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
-                values: new object[] { 3, 3, null, new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(9370), "Wrong yoga mat was delivered to me", 3, 3, "Yoga mat is wrong colour" });
+                values: new object[] { 3, 3, null, new DateTime(2021, 3, 22, 15, 51, 7, 934, DateTimeKind.Local).AddTicks(4033), "Wrong yoga mat was delivered to me", 3, 3, "Yoga mat is wrong colour" });
 
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
-                values: new object[] { 2, 2, null, new DateTime(2021, 2, 25, 20, 37, 17, 99, DateTimeKind.Local).AddTicks(9339), "Coffee spilled all over me", 2, 3, "Coffe spill" });
+                values: new object[] { 2, 2, null, new DateTime(2021, 3, 22, 15, 51, 7, 934, DateTimeKind.Local).AddTicks(4001), "Coffee spilled all over me", 2, 3, "Coffe spill" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CountryId",
@@ -197,6 +223,16 @@ namespace GBCSporting2021_GiveUsA.Migrations
                 name: "IX_Incidents_TechnicianId",
                 table: "Incidents",
                 column: "TechnicianId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Registrations_CustomerId",
+                table: "Registrations",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Registrations_ProductId",
+                table: "Registrations",
+                column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -205,13 +241,16 @@ namespace GBCSporting2021_GiveUsA.Migrations
                 name: "Incidents");
 
             migrationBuilder.DropTable(
+                name: "Registrations");
+
+            migrationBuilder.DropTable(
+                name: "Technicians");
+
+            migrationBuilder.DropTable(
                 name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Technicians");
 
             migrationBuilder.DropTable(
                 name: "Countries");

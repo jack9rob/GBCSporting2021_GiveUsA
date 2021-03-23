@@ -1,6 +1,6 @@
 ﻿@model Customer
 @{
-    string title = ViewBag.Action + " Customer";
+    string title = "Delete Customer";
     ViewBag.Title = title;
 }
 
@@ -9,7 +9,8 @@
 
 <form asp-action="Delete" method="post">
     <input type="hidden" asp-for="CustomerId" />
-
-    <button type="submit" class="btn btn-primary">Delete</button>
-    <a asp-controller="Delete" asp-action="List" class="btn btn-primary">Cancel</a>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-controller="Customer" asp-action="List" class="btn btn-success">Cancel</a>
+    </div>
 </form>

@@ -1,0 +1,18 @@
+﻿@{
+}
+
+<h1>Get Customer</h1>
+
+<form asp-action="SetRegistration" method="get">
+    <select class="form-control" name="id">
+        <option value="">Select a Customer</option>
+        @foreach (Customer c in ViewBag.Customers)
+        {
+            <option value="@c.CustomerId">@c.Firstname @c.Lastname</option>
+        }
+    </select>
+
+    <button type="submit" class="btn btn-success">Select</button>
+</form>
+
+

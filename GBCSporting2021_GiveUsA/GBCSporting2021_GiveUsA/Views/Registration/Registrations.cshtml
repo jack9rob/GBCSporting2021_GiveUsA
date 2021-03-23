@@ -1,0 +1,35 @@
+﻿@model Customer
+@{
+}
+
+@if (TempData["message"] != null)
+{
+    <h1>@TempData["message"]</h1>
+}
+
+<h1>Customer: @Model.Firstname @Model.Lastname</h1>
+
+<form asp-action="GetCustomer">
+    <button type="submit">Switch Customer</button>
+</form>
+
+<h1>Registration</h1>
+<select class="form-control" name="id">
+    <option value="">Select a Proudct</option>
+    @foreach (Registration r in ViewBag.Registrations)
+    {
+        <option value="@r.RegistrationId">@r.Product.Name</option>
+    }
+</select>
+
+<h1>Products</h1>
+<form asp-action="AddRegistration">
+    <select class="form-control" name="id">
+        <option value="">Select a Proudct</option>
+        @foreach (Product p in ViewBag.Products)
+        {
+            <option value="@p.ProductId">@p.Name</option>
+        }
+    </select>
+    <button type="submit">Register</button>
+</form>
