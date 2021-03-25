@@ -18,7 +18,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
-        public IActionResult List()
+        public IActionResult List(string filter = "all")
         {
             var incidents = context.Incidents
                 .Include(i => i.Product)

@@ -57,7 +57,7 @@
 
     <div class="form-group">
         <label asp-for="DateClosed">Date Closed</label>
-        <input asp-for="DateClosed" class="form-control" />
+        <input asp-for="DateClosed" type="text" value="@Model.DateClosed.ToString()" class="form-control" />
     </div>
 
     <input type="hidden" asp-for="IncidentId" />

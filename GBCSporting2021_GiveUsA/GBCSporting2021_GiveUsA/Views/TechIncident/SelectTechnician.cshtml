@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Technician>
+
+<h1>Select Technician</h1>
+
+<form asp-action="SetTechnician" method="post" >
+    <label id="getTechnicianLabel" for="getTechnicianSelect" class="form-check-label"></label>
+    <select class="form-control" name="id" id="getTechnicianSelect">
+        <option value="default">Select a Technician</option>
+        @foreach (Technician t in Model)
+        {
+            <option value=@t.TechnicianId>@t.Name</option>
+        }
+    </select>
+
+    <button type="submit" class="btn btn-success">Select</button>
+</form>

@@ -190,3 +190,5 @@ S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\G
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Registration\GetCustomer.cshtml.g.cs
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Registration\Registrations.cshtml.g.cs
 S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Registration\Delete.cshtml.g.cs
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\TechIncident\List.cshtml.g.cs
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\TechIncident\SelectTechnician.cshtml.g.cs

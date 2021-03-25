@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Incident>
+
+
+<h1>Test</h1>
+
+@foreach (Incident incident in Model)
+{
+    <tr>
+        <td>@incident.Title</td>
+        <td>@incident.Customer.Firstname @incident.Customer.Lastname </td>
+        <td>@incident.Product.Name</td>
+        <td>@incident.DateOpened.ToString("MM'/'dd'/'yyyy")</td>
+        <td>
+            <a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-primary">Edit</a>
+            <a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+}
