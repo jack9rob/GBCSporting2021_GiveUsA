@@ -36,7 +36,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
             return View(viewModel);
         }
 
-
+        [Route("getcustomer")]
         public IActionResult GetCustomer()
         {
             ViewBag.Customers = context.Customers.OrderBy(c => c.Lastname).ToList();
@@ -58,6 +58,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
             var session = new RegistrationSession(HttpContext.Session);
             var cid = session.GetId();
             string name = context.Products.FirstOrDefault(p => p.ProductId == id).Name;
+
             if (ModelState.IsValid)
             {
                 // check if product is already registered
@@ -75,18 +76,20 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("deleteregistration/{id}")]
         public IActionResult Delete(int id)
         {
             var registration = context.Registrations.Include(r => r.Product).FirstOrDefault(registration => registration.RegistrationId == id);
             return View(registration);
         }
 
+        [HttpPost]
+        [Route("deleteregistration/{id?}")]
         public IActionResult Delete(Registration registration)
         {
             context.Registrations.Remove(registration);
             context.SaveChanges();
             return RedirectToAction("Registrations");
         }
-        
     }
 }

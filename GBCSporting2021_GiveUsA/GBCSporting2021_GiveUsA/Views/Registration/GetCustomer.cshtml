@@ -1,10 +1,11 @@
 ﻿@{
+    ViewBag.Title = "Select Customer";
 }
 
 <h1>Get Customer</h1>
 
 <form asp-action="SetRegistration" method="post" onsubmit="return getCustomerValidation()">
-    <label  id="getCustomerLabel" for="getCustomerSelect" class="form-check-label"></label>
+    <label id="getCustomerLabel" for="getCustomerSelect" class="form-check-label"></label>
     <select class="form-control" name="id" id="getCustomerSelect">
         <option value="default">Select a Customer</option>
         @foreach (Customer c in ViewBag.Customers)

@@ -5,6 +5,7 @@ namespace GBCSporting2021_GiveUsA.Models
     public class RegistrationSession
     {
         private ISession session { get; set; }
+        private const string key = "customer";
 
         public RegistrationSession(ISession session)
         {
@@ -12,16 +13,13 @@ namespace GBCSporting2021_GiveUsA.Models
         }
 
         // set id, use string for id maybe
-        public void SetId(int id)
-        {
-            session.SetInt32("customer", id);
-        }
+        public void SetId(int id) => session.SetObject<int>(key, id);
 
         // get id, return -1 if not found
         public int GetId()
         {
-            var value = session.GetInt32("customer");
-            return (value == null) ? -1 : (int)value;
+            var value = session.GetObject<int>(key);
+            return (value == 0) ? -1 : (int)value;
         }
     }
 }

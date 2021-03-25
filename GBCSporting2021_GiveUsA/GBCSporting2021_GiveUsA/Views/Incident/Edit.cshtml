@@ -52,7 +52,7 @@
 
     <div class="form-group">
         <label asp-for="DateOpened">Date Opened</label>
-        <input asp-for="DateOpened" class="form-control" />
+        <input asp-for="DateOpened" type="text" value="@Model.DateOpened.ToString("MM'/'dd'/'yyyy")" class="form-control" />
     </div>
 
     <div class="form-group">
