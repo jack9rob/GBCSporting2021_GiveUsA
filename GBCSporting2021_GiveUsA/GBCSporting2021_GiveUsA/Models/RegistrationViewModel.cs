@@ -10,8 +10,5 @@ namespace GBCSporting2021_GiveUsA.Models
         public Customer Customer { get; set; }
         public List<Product> Products { get; set; }
         public List<Registration> Registrations { get; set; }
-
-        public Registration NewRegistration { get; set; }
-
     }
 }

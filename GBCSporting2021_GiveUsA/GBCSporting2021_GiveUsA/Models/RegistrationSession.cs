@@ -23,10 +23,5 @@ namespace GBCSporting2021_GiveUsA.Models
             var value = session.GetInt32("customer");
             return (value == null) ? -1 : (int)value;
         }
-
-        public void TestSession()
-        {
-            session.SetString("test", "test");
-        }
     }
 }

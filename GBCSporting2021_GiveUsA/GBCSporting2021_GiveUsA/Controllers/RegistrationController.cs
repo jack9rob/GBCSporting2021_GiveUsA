@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace GBCSporting2021_GiveUsA.Controllers
 {
@@ -30,7 +31,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
             var products = context.Products.OrderBy(p => p.Code).ToList();
             var registrations = context.Registrations.Where(r => r.CustomerId == cid).ToList();
 
-            var viewModel = new RegistrationViewModel { Customer = customer, Products = products, Registrations = registrations, NewRegistration = new Registration() };
+            var viewModel = new RegistrationViewModel { Customer = customer, Products = products, Registrations = registrations};
 
             return View(viewModel);
         }
@@ -42,7 +43,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
             return View();
         }
 
-        [Route("setregistration/{id?}")]
+        [Route("setregistration")]
         public IActionResult SetRegistration(string id)
         {
             Int32.TryParse(id, out int cid);
@@ -60,7 +61,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
             if (ModelState.IsValid)
             {
                 // check if product is already registered
-                if(context.Registrations.Where(r => r.ProductId == id).ToList().Count() != 0)
+                if(context.Registrations.Where(r => r.ProductId == id).Where(r => r.CustomerId == cid).ToList().Count() != 0)
                 {
                     TempData["message"] = name + " already registered";
                 } else
@@ -69,10 +70,22 @@ namespace GBCSporting2021_GiveUsA.Controllers
                     context.SaveChanges();
                     TempData["message"] = name + " Added!";
                 }
-
             }
             return RedirectToAction("Registrations");
-            
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var registration = context.Registrations.Include(r => r.Product).FirstOrDefault(registration => registration.RegistrationId == id);
+            return View(registration);
+        }
+
+        public IActionResult Delete(Registration registration)
+        {
+            context.Registrations.Remove(registration);
+            context.SaveChanges();
+            return RedirectToAction("Registrations");
         }
         
     }

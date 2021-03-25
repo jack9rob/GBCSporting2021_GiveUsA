@@ -18,10 +18,22 @@
 <h1>Registrations</h1>
 @if (Model.Registrations.Count != 0)
 {
+<table>
+    <thead>Products</thead>
+    <tbody>
         @foreach (Registration r in Model.Registrations)
         {
-            <p>@r.Product.Name</p>
-        }
+        <tr>
+            <td>@r.Product.Name</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@r.RegistrationId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+
+         }
+        </tbody>
+    </table>
+
 }
 else
 {
@@ -30,9 +42,9 @@ else
 
 
 <h1>Products</h1>
-<form asp-action="AddRegistration">
-    <select class="form-control" name="id">
-        <option value="">Select a Prouduct</option>
+<form asp-action="AddRegistration" onsubmit="return registerProductValidation()">
+    <select class="form-control" name="id" id="registerProductSelect">
+        <option value="default">Select a Prouduct</option>
         @foreach (Product p in Model.Products)
         {
             <option value="@p.ProductId">@p.Name</option>
