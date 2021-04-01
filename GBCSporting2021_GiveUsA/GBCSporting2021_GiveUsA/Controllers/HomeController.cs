@@ -15,5 +15,10 @@ namespace GBCSporting2021_GiveUsA.Controllers
         {
             return View();
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
     }
 }
