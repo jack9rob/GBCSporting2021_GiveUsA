@@ -4,13 +4,11 @@
 }
 
 <h1>@ViewBag.Action Incident</h1>
-<form asp-action="Edit" method="Post">
-    <div asp-validation-summary="All" class="text-danger"></div>
-
+<form asp-action="Edit" method="Post" onsubmit="return incidentValidation()">
     <div class="form-group">
         <label asp-for="CustomerId">Customer</label>
-        <select asp-for="CustomerId" class="form-control">
-            <option value="">Select a Customer</option>
+        <select asp-for="CustomerId" class="form-control" id="customerSelect">
+            <option value="default">Select a Customer</option>
             @foreach (Customer c in ViewBag.Customers)
             {
                 <option value="@c.CustomerId">@c.Firstname @c.Lastname</option>
@@ -20,8 +18,8 @@
 
     <div class="form-group">
         <label asp-for="ProductId">Product</label>
-        <select asp-for="ProductId" class="form-control">
-            <option value="">Select a Product</option>
+        <select asp-for="ProductId" class="form-control" id="productSelect">
+            <option value="default">Select a Product</option>
             @foreach (Product p in ViewBag.Products)
             {
                 <option value="@p.ProductId">@p.Name</option>
@@ -32,17 +30,19 @@
     <div class="form-group">
         <label asp-for="Title">Title</label>
         <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Description">Description</label>
         <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="TechnicianId">Tehcnician</label>
-        <select asp-for="TechnicianId" class="form-control">
-            <option value="">Select a Technician</option>
+        <select asp-for="TechnicianId" class="form-control" id="technicianSelect">
+            <option value="default">Select a Technician</option>
             @foreach (Technician t in ViewBag.Technicians)
             {
                 <option value="@t.TechnicianId">@t.Name</option>
@@ -52,7 +52,15 @@
 
     <div class="form-group">
         <label asp-for="DateOpened">Date Opened</label>
-        <input asp-for="DateOpened" type="text" value="@Model.DateOpened.ToString("MM'/'dd'/'yyyy")" class="form-control" />
+        <input asp-for="DateOpened" type="text" value="@Model.DateOpened.ToString("dd'/'MM'/'yyyy")" class="form-control" id="open" />
+        <span asp-validation-for="DateOpened" class="text-danger"></span>
+        <!--Date validation-->
+        <asp:CompareValidator ID="dateValidator" runat="server"
+                              ControlToValidate="open"
+                              ErrorMessage="Please enter a valid date."
+                              Operator="DataTypeCheck"
+                              Type="Date">
+        </asp:CompareValidator>
     </div>
 
     <div class="form-group">

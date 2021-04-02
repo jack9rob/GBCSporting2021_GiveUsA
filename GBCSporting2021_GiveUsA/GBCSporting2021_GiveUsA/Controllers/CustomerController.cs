@@ -1,5 +1,6 @@
 ﻿using GBCSporting2021_GiveUsA.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -27,9 +28,23 @@ namespace GBCSporting2021_GiveUsA.Controllers
             var customer = context.Customers.Include(c => c.Country).FirstOrDefault(c => c.CustomerId == id);
             return View(customer);
         }
+
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+            
+            string key = nameof(Customer.Email);
+            
+            if(ModelState.GetValidationState(key) == ModelValidationState.Valid)
+            {
+                var customerCheck = context.Customers.Where(c => c.Email == customer.Email && c.CustomerId != customer.CustomerId && c.Email != null).FirstOrDefault();
+                if (customerCheck != null)
+                {
+                    ModelState.AddModelError(key, "Email alreay is use");
+                }
+            }
+            
+
             if (ModelState.IsValid)
             {
                 if(customer.CustomerId == 0)
@@ -37,7 +52,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 else
                     context.Customers.Update(customer);
                     context.SaveChanges();
-                    return RedirectToAction("Index", "Customer");
+                    return RedirectToAction("List", "Customer");
                 
             }
             else
@@ -58,7 +73,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         {
             context.Customers.Remove(customer);
             context.SaveChanges();
-            return RedirectToAction("Index", "Customer");
+            return RedirectToAction("List", "Customer");
         }
         public IActionResult List()
         {

@@ -27,6 +27,7 @@ namespace GBCSporting2021_GiveUsA.Models
 
         [Required(ErrorMessage = "Enter a valid postal code")]
         public string Postalcode { get; set; }
+
         [Required(ErrorMessage = "Select a country")]
         public string CountryId { get; set; } // foreign key
         public Country Country { get; set; } // property
