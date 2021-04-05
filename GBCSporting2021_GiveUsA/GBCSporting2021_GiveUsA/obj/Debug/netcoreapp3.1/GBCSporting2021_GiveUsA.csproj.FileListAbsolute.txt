@@ -378,3 +378,4 @@ D:\computer program study materials\Semester 4\GBCSporting2021_GiveUsA\GBCSporti
 D:\computer program study materials\Semester 4\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.pdb
 D:\computer program study materials\Semester 4\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.genruntimeconfig.cache
 D:\computer program study materials\Semester 4\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\About\Index.cshtml.g.cs
+D:\computer program study materials\Semester 4\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\Razor\Views\Home\About.cshtml.g.cs

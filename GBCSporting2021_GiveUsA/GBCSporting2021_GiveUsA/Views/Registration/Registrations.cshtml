@@ -13,7 +13,7 @@
 <h1>Customer: @Model.Customer.Firstname @Model.Customer.Lastname</h1>
 
 <form asp-action="GetCustomer">
-    <button type="submit">Switch Customer</button>
+    <button type="submit">Switch Customer</button>sele
 </form>
 
 <h1>Registrations</h1>
@@ -27,7 +27,7 @@
                 <tr>
                     <td>@r.Product.Name</td>
                     <td>
-                        <a asp-action="Delete" asp-route-id="@r.RegistrationId" class="btn btn-danger">Delete</a>
+                        <a asp-action="Delete" asp-route-id="@r.RegistrationId" class="btn btn-primary">Delete</a>
                     </td>
                 </tr>
 
