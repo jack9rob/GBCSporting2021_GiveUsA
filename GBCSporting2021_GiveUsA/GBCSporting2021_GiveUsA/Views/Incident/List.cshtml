@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Incident>
+﻿@model IncidentViewModel
 @{
     ViewBag.Title = "Incident Manager";
 }
 
-<h1>Incidents</h1>
+<h1>Incidents | @Model.Filter</h1>
 
 <a asp-controller="Home" asp-action="Index" class="mb-2 btn btn-success">Back</a>
 <table class="table table-bordered table-striped">
@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Incident incident in Model)
+        @foreach (Incident incident in Model.Incidents)
         {
             <tr>
                 <td>@incident.Title</td>

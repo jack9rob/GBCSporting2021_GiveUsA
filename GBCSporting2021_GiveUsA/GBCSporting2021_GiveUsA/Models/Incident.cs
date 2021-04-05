@@ -28,7 +28,7 @@ namespace GBCSporting2021_GiveUsA.Models
         public Product Product { get; set; }
         
         // technician
-        public int TechnicianId { get; set; }
+        public int? TechnicianId { get; set; }
         public Technician Technician { get; set; }
 
         public string Slug => Title?.Replace(" ", "-").ToLower();

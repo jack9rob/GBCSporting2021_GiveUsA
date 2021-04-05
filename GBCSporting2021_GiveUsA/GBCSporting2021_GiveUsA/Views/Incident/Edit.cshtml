@@ -1,4 +1,4 @@
-﻿@model Incident
+﻿@model IncidentViewModel
 @{
     ViewBag.Title = ViewBag.Action + " Incident";
 }
@@ -6,10 +6,10 @@
 <h1>@ViewBag.Action Incident</h1>
 <form asp-action="Edit" method="Post" onsubmit="return incidentValidation()">
     <div class="form-group">
-        <label asp-for="CustomerId">Customer</label>
-        <select asp-for="CustomerId" class="form-control" id="customerSelect">
+        <label asp-for="CurrentIncident.CustomerId">Customer</label>
+        <select asp-for="CurrentIncident.CustomerId" class="form-control" id="customerSelect">
             <option value="default">Select a Customer</option>
-            @foreach (Customer c in ViewBag.Customers)
+            @foreach (Customer c in Model.Customers)
             {
                 <option value="@c.CustomerId">@c.Firstname @c.Lastname</option>
             }
@@ -17,10 +17,10 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="ProductId">Product</label>
-        <select asp-for="ProductId" class="form-control" id="productSelect">
+        <label asp-for="CurrentIncident.ProductId">Product</label>
+        <select asp-for="CurrentIncident.ProductId" class="form-control" id="productSelect">
             <option value="default">Select a Product</option>
-            @foreach (Product p in ViewBag.Products)
+            @foreach (Product p in Model.Products)
             {
                 <option value="@p.ProductId">@p.Name</option>
             }
@@ -28,22 +28,22 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Title">Title</label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
+        <label asp-for="CurrentIncident.Title">Title</label>
+        <input asp-for="CurrentIncident.Title" class="form-control" />
+        <span asp-validation-for="CurrentIncident.Title" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Description">Description</label>
-        <input asp-for="Description" class="form-control" />
-        <span asp-validation-for="Description" class="text-danger"></span>
+        <label asp-for="CurrentIncident.Description">Description</label>
+        <input asp-for="CurrentIncident.Description" class="form-control" />
+        <span asp-validation-for="CurrentIncident.Description" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="TechnicianId">Tehcnician</label>
-        <select asp-for="TechnicianId" class="form-control" id="technicianSelect">
+        <label asp-for="CurrentIncident.TechnicianId">Tehcnician</label>
+        <select asp-for="CurrentIncident.TechnicianId" class="form-control" id="technicianSelect">
             <option value="default">Select a Technician</option>
-            @foreach (Technician t in ViewBag.Technicians)
+            @foreach (Technician t in Model.Technicians)
             {
                 <option value="@t.TechnicianId">@t.Name</option>
             }
@@ -51,9 +51,9 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="DateOpened">Date Opened</label>
-        <input asp-for="DateOpened" type="text" value="@Model.DateOpened.ToString("dd'/'MM'/'yyyy")" class="form-control" id="open" />
-        <span asp-validation-for="DateOpened" class="text-danger"></span>
+        <label asp-for="CurrentIncident.DateOpened">Date Opened</label>
+        <input asp-for="CurrentIncident.DateOpened" type="text" value="@Model.CurrentIncident.DateOpened.ToString("MM'/'dd'/'yyyy")" class="form-control" id="open" />
+        <span asp-validation-for="CurrentIncident.DateOpened" class="text-danger"></span>
         <!--Date validation-->
         <asp:CompareValidator ID="dateValidator" runat="server"
                               ControlToValidate="open"
@@ -64,12 +64,12 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="DateClosed">Date Closed</label>
-        <input asp-for="DateClosed" type="text" value="@Model.DateClosed.ToString()" class="form-control" />
+        <label asp-for="CurrentIncident.DateClosed">Date Closed</label>
+        <input asp-for="CurrentIncident.DateClosed" type="text" value="@Model.CurrentIncident.DateClosed.ToString()" class="form-control" />
     </div>
 
-    <input type="hidden" asp-for="IncidentId" />
+    <input type="hidden" asp-for="CurrentIncident.IncidentId" />
 
-    <button type="submit" class="btn btn-success">@ViewBag.Action</button>
+    <button type="submit" class="btn btn-success">@Model.Action</button>
     <a asp-controller="Incident" asp-action="List" class="btn btn-danger">Cancel</a>
 </form>

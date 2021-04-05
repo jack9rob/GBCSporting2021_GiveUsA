@@ -18,24 +18,42 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("incidents/{filter?}")]
         public IActionResult List(string filter = "all")
         {
-            var incidents = context.Incidents
+            IQueryable<Incident> incidents = context.Incidents
                 .Include(i => i.Product)
                 .Include(i => i.Customer)
-                .Include(i => i.Technician)
-                .OrderBy(i => i.DateOpened);
-            return View(incidents);
+                .Include(i => i.Technician);
+            if(filter == "unassigned")
+            {
+                incidents = incidents.Where(i => i.TechnicianId == null);
+            } else if(filter == "open")
+            {
+                incidents = incidents.Where(i => i.DateClosed == null);
+            }
+
+            var vm = new IncidentViewModel { Incidents = incidents.ToList(), Filter = filter };
+            return View(vm);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Action = "Add";
-            ViewBag.Customers = context.Customers.OrderBy(c => c.Firstname).ToList();
-            ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
-            ViewBag.Technicians = context.Technicians.OrderBy(t => t.Name).ToList();
-            return View("Edit", new Incident());
+            string action = "Add";
+            List<Customer> customers = context.Customers.OrderBy(c => c.Firstname).ToList();
+            List<Product> products = context.Products.OrderBy(p => p.Name).ToList();
+            List<Technician> technicians = context.Technicians.OrderBy(t => t.Name).ToList();
+
+            IncidentViewModel vm = new IncidentViewModel
+            {
+                Customers = customers,
+                Products = products,
+                Technicians = technicians,
+                CurrentIncident = new Incident(),
+                Action = action
+            };
+            return View("Edit", vm);
         }
 
         [HttpGet]
@@ -54,28 +72,25 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Incident incident)
+        public IActionResult Edit(IncidentViewModel vm)
         {
-            string action = (incident.IncidentId == 0) ? "Add" : "Edit";
+
+            string action = vm.Action;
             if (ModelState.IsValid)
             {
                 if(action == "Add")
                 {
-                    incident.DateOpened = DateTime.Now;
-                    context.Incidents.Add(incident);
+                    vm.CurrentIncident.DateOpened = DateTime.Now;
+                    context.Incidents.Add(vm.CurrentIncident);
                 } else
                 {
-                    context.Incidents.Update(incident);
+                    context.Incidents.Update(vm.CurrentIncident);
                 }
                 context.SaveChanges();
                 return RedirectToAction("List", "Incident");
             } else
             {
-                ViewBag.Action = action;
-                ViewBag.Customers = context.Customers.OrderBy(c => c.Firstname).ToList();
-                ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
-                ViewBag.Technicians = context.Technicians.OrderBy(t => t.Name).ToList();
-                return View(incident);
+                return View(vm);
             }
         }
 

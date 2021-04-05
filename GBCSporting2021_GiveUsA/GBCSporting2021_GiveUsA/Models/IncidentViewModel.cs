@@ -13,6 +13,8 @@ namespace GBCSporting2021_GiveUsA.Models
 
         public List<Technician> Technicians { get; set; }
 
+        public List<Incident> Incidents { get; set; }
+
         public Incident CurrentIncident { get; set; }
 
         public string Action { get; set; }
