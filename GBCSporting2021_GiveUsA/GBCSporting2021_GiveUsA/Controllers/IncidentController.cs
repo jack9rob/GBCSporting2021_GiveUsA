@@ -64,6 +64,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 .Include(i => i.Customer)
                 .Include(i => i.Technician)
                 .FirstOrDefault(i => i.IncidentId == id);
+
             var customers = context.Customers.OrderBy(c => c.Firstname).ToList();
             var products = context.Products.OrderBy(p => p.Name).ToList();
             var technicians = context.Technicians.OrderBy(t => t.Name).ToList();
@@ -96,10 +97,10 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 }
                 context.SaveChanges();
                 return RedirectToAction("List", "Incident");
-            } else
+            }else
             {
                 return View(vm);
-            }
+            }    
         }
 
         [HttpGet]

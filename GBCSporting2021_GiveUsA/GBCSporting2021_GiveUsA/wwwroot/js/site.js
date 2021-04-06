@@ -4,6 +4,7 @@
 // Write your JavaScript code.
 
 // validates customer selection
+/*
 function getCustomerValidation() {
     var selectElement = document.getElementById("getCustomerSelect");
     var selected = selectElement.options[selectElement.selectedIndex].value
@@ -57,3 +58,4 @@ function incidentValidation() {
     } 
     return flag;
 }
+*/

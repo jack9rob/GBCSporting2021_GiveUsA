@@ -5,8 +5,6 @@
 
 <h1>Technicians</h1>
 
-<a asp-controller="Home" asp-action="Index" class="mb-2 btn btn-success">Back</a>
-
 <table class="table table-bordered table-striped">
     <thread>
         <tr>
@@ -30,10 +28,13 @@
                 </td>
                 <td>
                     <a asp-controller="Technician" asp-action="Delete" asp-route-id="@Technician.TechnicianId"
-                       asp-route-slug="@Technician.Slug" class="btn btn-danger">Delete</a>
+                       asp-route-slug="@Technician.Slug" class="btn btn-primary">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<a asp-controller="Technician" asp-action="Add" class="btn btn-success">Add Technician</a>
+<div class="d-flex justify-content-lg-between">
+    <a asp-controller="Home" asp-action="Index" class="mb-2 btn btn-primary">Back</a>
+    <a asp-controller="Technician" asp-action="Add" class="btn btn-primary">Add Technician</a>
+</div>

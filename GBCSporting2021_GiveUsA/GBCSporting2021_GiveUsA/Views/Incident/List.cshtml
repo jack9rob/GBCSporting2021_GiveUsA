@@ -3,9 +3,11 @@
     ViewBag.Title = "Incident Manager";
 }
 
+<a asp-action="List" asp-route-filter="all">All</a>
+<a asp-action="List" asp-route-filter="open">Open</a>
+<a asp-action="List" asp-route-filter="unassigned">Unassigned</a>
 <h1>Incidents | @Model.Filter</h1>
 
-<a asp-controller="Home" asp-action="Index" class="mb-2 btn btn-success">Back</a>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -26,12 +28,15 @@
                 <td>@incident.DateOpened.ToString("MM'/'dd'/'yyyy")</td>
                 <td>
                     <a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-primary">Edit</a>
-                    <a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-danger">Delete</a>
+                    <a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId" asp-route-slug="@incident.Slug" class="btn btn-primary">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<a asp-controller="Incident" asp-action="Add" class="btn btn-success">Add Incident</a>
+<div class="d-flex justify-content-lg-between">
+    <a asp-controller="Home" asp-action="Index" class="mb-2 btn btn-primary">Back</a>
+    <a asp-controller="Incident" asp-action="Add" class="btn btn-primary">Add Incident</a>
+</div>
 
 

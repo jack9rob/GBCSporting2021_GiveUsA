@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "62cStcnJn9GGdWcaIhX9+JQ0Tz1hDAldvYM2u3zN4Ub8Y3Y6YWmJeOuXHaC1lWklU8ZgIWnr0tBEQ8P1xmq/NQ==",
+  "dgSpecHash": "oJw/ATXzJ1NsxSI2hN5y2VK//wmS3IAV4J27d0Z76Sj+71sNkKpdLCLsLaZOApREgtbw+h7YfsORXXhcPoXEYA==",
   "success": true,
   "projectFilePath": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
   "expectedPackageFiles": [
@@ -195,8 +195,7 @@
     "C:\\Users\\jack9\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\jack9\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\jack9\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\jack9\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\jack9\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+    "C:\\Users\\jack9\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

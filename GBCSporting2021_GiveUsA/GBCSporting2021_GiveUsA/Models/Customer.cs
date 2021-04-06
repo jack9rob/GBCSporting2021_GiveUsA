@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GBCSporting2021_GiveUsA.Models.Validation;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -29,9 +31,12 @@ namespace GBCSporting2021_GiveUsA.Models
         public string Postalcode { get; set; }
 
         [Required(ErrorMessage = "Select a country")]
+        [GreaterThan(0, ErrorMessage ="Please Select a Country")]
         public string CountryId { get; set; } // foreign key
         public Country Country { get; set; } // property
 
+        [DataType(DataType.EmailAddress)]
+        [Remote("CheckEmail", "Validation", AdditionalFields = "CustomerId", ErrorMessage = "Email already in use")]
         public string Email { get; set; } // optional
 
         public string Phone { get; set; } // optional

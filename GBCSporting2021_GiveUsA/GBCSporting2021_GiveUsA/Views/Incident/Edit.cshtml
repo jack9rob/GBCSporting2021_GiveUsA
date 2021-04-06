@@ -8,12 +8,13 @@
     <div class="form-group">
         <label asp-for="CurrentIncident.CustomerId">Customer</label>
         <select asp-for="CurrentIncident.CustomerId" class="form-control" id="customerSelect">
-            <option value="default">Select a Customer</option>
+            <option >Select a Customer</option>
             @foreach (Customer c in Model.Customers)
             {
                 <option value="@c.CustomerId">@c.Firstname @c.Lastname</option>
             }
         </select>
+        <span asp-validation-for="CurrentIncident.CustomerId" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -70,6 +71,11 @@
 
     <input type="hidden" asp-for="CurrentIncident.IncidentId" />
 
-    <button type="submit" class="btn btn-success">@Model.Action</button>
-    <a asp-controller="Incident" asp-action="List" class="btn btn-danger">Cancel</a>
+    <input type="hidden" asp-for="Customers" />
+    <input type="hidden" asp-for="Products" />
+    <input type="hidden" asp-for="Technicians" />
+    <input type="hidden" asp-for="Incidents" />
+
+    <button type="submit" class="btn btn-primary">@Model.Action</button>
+    <a asp-controller="Incident" asp-action="List" class="btn btn-primary">Cancel</a>
 </form>

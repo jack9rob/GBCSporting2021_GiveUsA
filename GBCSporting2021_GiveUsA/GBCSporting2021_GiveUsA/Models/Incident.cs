@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GBCSporting2021_GiveUsA.Models.Validation;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace GBCSporting2021_GiveUsA.Models
@@ -19,6 +20,7 @@ namespace GBCSporting2021_GiveUsA.Models
 
         // customer
         [Required(ErrorMessage = "Select a Customer")]
+        //[GreaterThan(0, ErrorMessage = "Please select a customer")]
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
