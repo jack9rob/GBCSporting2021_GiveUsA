@@ -1,0 +1,35 @@
+﻿@model Incident
+
+<h1>Edit Incident</h1>
+<form asp-action="Edit" method="post">
+    <label>Technician</label>
+    <input value="@Model.Technician.Name" readonly />
+    <br />
+    <label>Customer</label>
+    <input value="@Model.Customer.Firstname @Model.Customer.Lastname" readonly />
+    <br />
+    <label>Product</label>
+    <input value="@Model.Product.Name" readonly />
+    <br />
+    <label>Title</label>
+    <input value="@Model.Title" readonly />
+    <br />
+    <label>Date Opened</label>
+    <input type="text" value="@Model.DateOpened.ToString("MM'/'dd'/'yyyy")" class="form-control" readonly />
+    <br />
+    <label asp-for="Description">Description</label>
+    <input type="text" asp-for="Description" value="@Model.Description" />
+    <br />
+    <label asp-for="DateClosed">Date Closed</label>
+    <input type="text" asp-for="DateClosed" value="@Model.DateClosed" />
+
+    <input type="hidden" asp-for="IncidentId" value="@Model.IncidentId" />
+    <input type="hidden" asp-for="TechnicianId" value="@Model.TechnicianId" />
+    <input type="hidden" asp-for="ProductId" value="@Model.ProductId" />
+    <input type="hidden" asp-for="CustomerId" value="@Model.CustomerId" />
+    <input type="hidden" asp-for="Title" value="@Model.Title" />
+    <input type="hidden" asp-for="DateOpened" value="@Model.DateOpened" />
+
+    <button type="submit" class="btn btn-success">Edit</button>
+    <a asp-controller="TechIncident" asp-action="List" class="btn btn-danger">Cancel</a>
+</form>

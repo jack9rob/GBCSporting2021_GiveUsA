@@ -51,5 +51,31 @@ namespace GBCSporting2021_GiveUsA.Controllers
             session.SetId(id);
             return RedirectToAction("List");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var incident = context.Incidents.
+                Include(i => i.Technician).
+                Include(i => i.Customer).
+                Include(i => i.Product).
+                Where(i => i.IncidentId == id).FirstOrDefault();
+            return View(incident);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Incident incident)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Incidents.Update(incident);
+                context.SaveChanges();
+                return RedirectToAction("List", "TechIncident");
+            }
+            else
+            {
+                return View(incident);
+            }
+        }
     }
 }

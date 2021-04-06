@@ -59,16 +59,24 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.Action = "Edit";
             var incident = context.Incidents
                 .Include(i => i.Product)
                 .Include(i => i.Customer)
                 .Include(i => i.Technician)
                 .FirstOrDefault(i => i.IncidentId == id);
-            ViewBag.Customers = context.Customers.OrderBy(c => c.Firstname).ToList();
-            ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
-            ViewBag.Technicians = context.Technicians.OrderBy(t => t.Name).ToList();
-            return View(incident);
+            var customers = context.Customers.OrderBy(c => c.Firstname).ToList();
+            var products = context.Products.OrderBy(p => p.Name).ToList();
+            var technicians = context.Technicians.OrderBy(t => t.Name).ToList();
+
+            IncidentViewModel vm = new IncidentViewModel
+            {
+                Customers = customers,
+                Products = products,
+                Technicians = technicians,
+                CurrentIncident = incident,
+                Action = "Edit"
+            };
+            return View(vm);
         }
 
         [HttpPost]
@@ -98,13 +106,14 @@ namespace GBCSporting2021_GiveUsA.Controllers
         public IActionResult Delete(int id)
         {
             var incident = context.Incidents.FirstOrDefault(i => i.IncidentId == id);
-            return View(incident);
+            IncidentViewModel vm = new IncidentViewModel { CurrentIncident = incident, Action = "Delete" };
+            return View(vm);
         }
 
         [HttpPost]
-        public IActionResult Delete(Incident incident)
+        public IActionResult Delete(IncidentViewModel vm)
         {
-            context.Incidents.Remove(incident);
+            context.Incidents.Remove(vm.CurrentIncident);
             context.SaveChanges();
             return RedirectToAction("List", "Incident");
         }
