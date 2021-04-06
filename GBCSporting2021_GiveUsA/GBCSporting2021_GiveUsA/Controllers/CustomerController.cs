@@ -32,7 +32,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
-            
+            /*
             string key = nameof(Customer.Email);
             
             if(ModelState.GetValidationState(key) == ModelValidationState.Valid)
@@ -43,7 +43,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
                     ModelState.AddModelError(key, "Email alreay is use");
                 }
             }
-            
+            */
 
             if (ModelState.IsValid)
             {

@@ -8,7 +8,7 @@
     <div class="form-group">
         <label asp-for="CurrentIncident.CustomerId">Customer</label>
         <select asp-for="CurrentIncident.CustomerId" class="form-control" id="customerSelect">
-            <option >Select a Customer</option>
+            <option value="" >Select a Customer</option>
             @foreach (Customer c in Model.Customers)
             {
                 <option value="@c.CustomerId">@c.Firstname @c.Lastname</option>
@@ -20,12 +20,12 @@
     <div class="form-group">
         <label asp-for="CurrentIncident.ProductId">Product</label>
         <select asp-for="CurrentIncident.ProductId" class="form-control" id="productSelect">
-            <option value="default">Select a Product</option>
+            <option value="">Select a Product</option>
             @foreach (Product p in Model.Products)
             {
-                <option value="@p.ProductId">@p.Name</option>
-            }
+    <option value="@p.ProductId">@p.Name</option>            }
         </select>
+        <span asp-validation-for="CurrentIncident.ProductId" class="text-danger"></span>
     </div>
 
     <div class="form-group">

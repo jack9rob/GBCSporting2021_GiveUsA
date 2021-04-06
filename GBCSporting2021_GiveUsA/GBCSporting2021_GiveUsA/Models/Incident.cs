@@ -21,12 +21,12 @@ namespace GBCSporting2021_GiveUsA.Models
         // customer
         [Required(ErrorMessage = "Select a Customer")]
         //[GreaterThan(0, ErrorMessage = "Please select a customer")]
-        public int CustomerId { get; set; }
+        public int? CustomerId { get; set; }
         public Customer Customer { get; set; }
 
         // product
         [Required(ErrorMessage ="Product is Required")]
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
         public Product Product { get; set; }
         
         // technician

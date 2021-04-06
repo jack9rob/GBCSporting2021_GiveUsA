@@ -16,6 +16,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
             context = ctx;
         }
 
+        [AcceptVerbs("GET", "POST")]
         public IActionResult CheckEmail(string email, int id)
         {
             bool result;

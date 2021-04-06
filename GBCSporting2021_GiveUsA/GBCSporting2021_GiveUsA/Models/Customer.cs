@@ -30,6 +30,7 @@ namespace GBCSporting2021_GiveUsA.Models
         [Required(ErrorMessage = "Enter a valid postal code")]
         public string Postalcode { get; set; }
 
+        
         [Required(ErrorMessage = "Select a country")]
         [GreaterThan(0, ErrorMessage ="Please Select a Country")]
         public string CountryId { get; set; } // foreign key
