@@ -3,11 +3,6 @@
     ViewBag.Title = "Registrations";
 }
 
-@if (TempData["message"] != null)
-{
-    <h1>@TempData["message"]</h1>
-}
-
 <div asp-validation-summary="All" class="text-danger"></div>
 
 <h1>Customer: @Model.Customer.Firstname @Model.Customer.Lastname</h1>

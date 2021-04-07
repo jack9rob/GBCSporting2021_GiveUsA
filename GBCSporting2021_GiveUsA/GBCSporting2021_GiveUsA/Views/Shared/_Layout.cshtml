@@ -16,7 +16,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-flex justify-content-center">
+                <div class="navbar-collapse collapse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -46,6 +46,14 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @if (TempData["message"] != null) {
+            <div style="height: 100px;" class="container bg-success d-flex justify-content-center align-content-center">
+                <div class="m-auto">
+                    <h1 class="text-light">@TempData["message"]</h1>
+                </div>
+            </div>    
+             }
+            
             @RenderBody()
         </main>
     </div>

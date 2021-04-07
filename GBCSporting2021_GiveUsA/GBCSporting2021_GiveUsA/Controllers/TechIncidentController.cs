@@ -37,7 +37,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 ToList();
             return View(incidents);
         }
-
+        [Route("get-technician")]
         public IActionResult SelectTechnician()
         {
             var technicians = context.Technicians.OrderBy(t => t.Name).ToList();
@@ -45,6 +45,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpPost]
+        [Route("set-technician")]
         public IActionResult SetTechnician(int id)
         {
             var session = new TechnicianSession(HttpContext.Session);
@@ -53,6 +54,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("technician-incident/edit/{id}/{slug}")]
         public IActionResult Edit(int id)
         {
             var incident = context.Incidents.
@@ -64,6 +66,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpPost]
+        [Route("technician-incident/edit/{id}/{slug}")]
         public IActionResult Edit(Incident incident)
         {
             if (ModelState.IsValid)

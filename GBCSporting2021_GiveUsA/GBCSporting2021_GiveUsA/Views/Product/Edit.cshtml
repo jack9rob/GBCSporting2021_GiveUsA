@@ -4,7 +4,7 @@
 }
 
 <h1>@ViewBag.Action Product</h1>
-<form asp-action="Edit" method="Post">
+<form asp-controller="Product" asp-action="Edit" method="Post">
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">

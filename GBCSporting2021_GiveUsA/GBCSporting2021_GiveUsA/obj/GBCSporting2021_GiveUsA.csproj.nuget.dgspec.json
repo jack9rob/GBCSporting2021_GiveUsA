@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj": {}
+    "D:\\computer program study materials\\Semester 4\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj": {}
   },
   "projects": {
-    "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj": {
+    "D:\\computer program study materials\\Semester 4\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
+        "projectUniqueName": "D:\\computer program study materials\\Semester 4\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
         "projectName": "GBCSporting2021_GiveUsA",
-        "projectPath": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
-        "packagesPath": "C:\\Users\\jack9\\.nuget\\packages\\",
-        "outputPath": "S:\\Web Application Development\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\obj\\",
+        "projectPath": "D:\\computer program study materials\\Semester 4\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA.csproj",
+        "packagesPath": "C:\\Users\\Fat'h\\.nuget\\packages\\",
+        "outputPath": "D:\\computer program study materials\\Semester 4\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\GBCSporting2021_GiveUsA\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jack9\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fat'h\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

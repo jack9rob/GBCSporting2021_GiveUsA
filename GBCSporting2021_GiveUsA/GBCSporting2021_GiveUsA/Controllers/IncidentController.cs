@@ -38,6 +38,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("incidents/add")]
         public IActionResult Add()
         {
             string action = "Add";
@@ -57,6 +58,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("incidents/edit/{id}/{slug}")]
         public IActionResult Edit(int id)
         {
             var incident = context.Incidents
@@ -81,6 +83,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpPost]
+        [Route("incidents/edit/{id}/{slug}")]
         public IActionResult Edit(IncidentViewModel vm)
         {
 
@@ -91,9 +94,11 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 {
                     vm.CurrentIncident.DateOpened = DateTime.Now;
                     context.Incidents.Add(vm.CurrentIncident);
+                    TempData["message"] = vm.CurrentIncident.Title + " Added!";
                 } else
                 {
                     context.Incidents.Update(vm.CurrentIncident);
+                    TempData["message"] = vm.CurrentIncident.Title + " Updated!";
                 }
                 context.SaveChanges();
                 return RedirectToAction("List", "Incident");
@@ -104,6 +109,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("incidents/delete/{id}/{slug}")]
         public IActionResult Delete(int id)
         {
             var incident = context.Incidents.FirstOrDefault(i => i.IncidentId == id);
@@ -112,9 +118,11 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpPost]
+        [Route("incidents/delete/{id}/{slug}")]
         public IActionResult Delete(IncidentViewModel vm)
         {
             context.Incidents.Remove(vm.CurrentIncident);
+            TempData["message"] = vm.CurrentIncident.Title + " Deleted!";
             context.SaveChanges();
             return RedirectToAction("List", "Incident");
         }

@@ -17,6 +17,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("products")]
         public IActionResult List()
         {
             var products = context.Products.OrderBy(p => p.ReleaseDate).ToList();
@@ -24,6 +25,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("products/add")]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
@@ -31,6 +33,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("products/edit/{id}/{slug}")]
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
@@ -40,6 +43,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpPost]
+        [Route("products/edit/{id}/{slug}")]
         public IActionResult Edit(Product product)
         {
             string action = (product.ProductId == 0) ? "Add" : "Edit";
@@ -48,10 +52,12 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 if (action == "Add")
                 {
                     context.Products.Add(product);
+                    TempData["message"] = product.Name + " Added!";
                 }
                 else
                 {
                     context.Products.Update(product);
+                    TempData["message"] = product.Name + " Updated!";
                 }
                 context.SaveChanges();
                 return RedirectToAction("List", "Product");
@@ -64,6 +70,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpGet]
+        [Route("products/delete/{id}/{slug}")]
         public IActionResult Delete(int id)
         {
             var product = context.Products.FirstOrDefault(p => p.ProductId == id);
@@ -71,9 +78,11 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpPost]
+        [Route("products/delete/{id}/{slug}")]
         public IActionResult Delete(Product product)
         {
             context.Products.Remove(product);
+            TempData["message"] = product.Name + " Deleted!";
             context.SaveChanges();
             return RedirectToAction("List", "Product");
         }

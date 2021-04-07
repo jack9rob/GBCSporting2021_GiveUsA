@@ -9,6 +9,7 @@
 
 <form asp-action="Delete" method="post">
     <input type="hidden" asp-for="TechnicianId" />
+    <input type="hidden" asp-for="Name" />
     <div class="mt-3">
         <button type="submit" class="btn btn-primary">Delete</button>
         <a asp-controller="Technician" asp-action="List" class="btn btn-primary">Cancel</a>

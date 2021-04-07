@@ -14,6 +14,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
             context = ctx;
         }
         [HttpGet]
+        [Route("customers/add")]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
@@ -21,6 +22,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
             return View("Edit", new Customer());
         }
         [HttpGet]
+        [Route("customers/edit/{id}/{slug}")]
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
@@ -30,6 +32,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpPost]
+        [Route("customers/edit/{id}/{slug}")]
         public IActionResult Edit(Customer customer)
         {
             /*
@@ -69,18 +72,22 @@ namespace GBCSporting2021_GiveUsA.Controllers
             }
         }
         [HttpGet]
+        [Route("customers/delete/{id}/{slug}")]
         public IActionResult Delete(int id)
         {
             var customer = context.Customers.Find(id);
             return View(customer);
         }
         [HttpPost]
+        [Route("customers/delete/{id}/{slug}")]
         public IActionResult Delete(Customer customer)
         {
+            TempData["message"] = customer.Firstname + " " + customer.Lastname + " Deleted!";
             context.Customers.Remove(customer);
             context.SaveChanges();
             return RedirectToAction("List", "Customer");
         }
+        [Route("customers")]
         public IActionResult List()
         {
             var customers = context.Customers
