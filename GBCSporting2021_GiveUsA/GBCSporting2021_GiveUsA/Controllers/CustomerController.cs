@@ -48,11 +48,17 @@ namespace GBCSporting2021_GiveUsA.Controllers
             if (ModelState.IsValid)
             {
                 if(customer.CustomerId == 0)
+                {
                     context.Customers.Add(customer);
+                    TempData["message"] = customer.Firstname + " " + customer.Lastname + " Added!";
+                }  
                 else
+                {
                     context.Customers.Update(customer);
-                    context.SaveChanges();
-                    return RedirectToAction("List", "Customer");
+                    TempData["message"] = customer.Firstname + " " + customer.Lastname + " Edited!";
+                }                    
+                context.SaveChanges();
+                return RedirectToAction("List", "Customer");
                 
             }
             else
