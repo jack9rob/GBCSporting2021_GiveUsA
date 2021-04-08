@@ -8,17 +8,20 @@ namespace GBCSporting2021_GiveUsA.Controllers
 {
     public class CustomerController : Controller
     {
-        public TechnicalSupportContext context { get; set; }
+        public UnitOfWork unitOfWork;
+        
         public CustomerController(TechnicalSupportContext ctx)
         {
-            context = ctx;
+            unitOfWork = new UnitOfWork(ctx);
         }
+        
+
         [HttpGet]
         [Route("customers/add")]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
+            ViewBag.Countries = unitOfWork.CountryRepository.Get().ToList();
             return View("Edit", new Customer());
         }
         [HttpGet]
@@ -26,48 +29,48 @@ namespace GBCSporting2021_GiveUsA.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
-            var customer = context.Customers.Include(c => c.Country).FirstOrDefault(c => c.CustomerId == id);
+            ViewBag.Countries = unitOfWork.CountryRepository.Get().ToList();
+            var customer = unitOfWork.CustomerRepository.Get(includeProperties: "Country").FirstOrDefault(c => c.CustomerId == id);
             return View(customer);
         }
 
         [HttpPost]
-        [Route("customers/edit/{id}/{slug}")]
+        [Route("customers/edit/{id?}/{slug?}")]
         public IActionResult Edit(Customer customer)
         {
-            /*
+            
             string key = nameof(Customer.Email);
             
             if(ModelState.GetValidationState(key) == ModelValidationState.Valid)
             {
-                var customerCheck = context.Customers.Where(c => c.Email == customer.Email && c.CustomerId != customer.CustomerId && c.Email != null).FirstOrDefault();
+                var customerCheck = unitOfWork.CustomerRepository.Get(c => c.Email == customer.Email && c.CustomerId != customer.CustomerId && c.Email != null).FirstOrDefault();
                 if (customerCheck != null)
                 {
                     ModelState.AddModelError(key, "Email alreay is use");
                 }
             }
-            */
+            
 
             if (ModelState.IsValid)
             {
                 if(customer.CustomerId == 0)
                 {
-                    context.Customers.Add(customer);
+                    unitOfWork.CustomerRepository.Insert(customer);
                     TempData["message"] = customer.Firstname + " " + customer.Lastname + " Added!";
                 }  
                 else
                 {
-                    context.Customers.Update(customer);
+                    unitOfWork.CustomerRepository.Update(customer);
                     TempData["message"] = customer.Firstname + " " + customer.Lastname + " Edited!";
-                }                    
-                context.SaveChanges();
+                }
+                unitOfWork.Save();
                 return RedirectToAction("List", "Customer");
                 
             }
             else
             {
                 ViewBag.Action = (customer.CustomerId == 0) ? "Add" : "Edit";
-                ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
+                ViewBag.Countries = unitOfWork.CountryRepository.Get().ToList();
                 return View(customer);
             }
         }
@@ -75,7 +78,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("customers/delete/{id}/{slug}")]
         public IActionResult Delete(int id)
         {
-            var customer = context.Customers.Find(id);
+            var customer = unitOfWork.CustomerRepository.GetByID(id);
             return View(customer);
         }
         [HttpPost]
@@ -83,16 +86,14 @@ namespace GBCSporting2021_GiveUsA.Controllers
         public IActionResult Delete(Customer customer)
         {
             TempData["message"] = customer.Firstname + " " + customer.Lastname + " Deleted!";
-            context.Customers.Remove(customer);
-            context.SaveChanges();
+            unitOfWork.CustomerRepository.Delete(customer);
+            unitOfWork.Save();
             return RedirectToAction("List", "Customer");
         }
         [Route("customers")]
         public IActionResult List()
         {
-            var customers = context.Customers
-                .Include(c => c.Country)
-                .ToList();
+            var customers = unitOfWork.CustomerRepository.Get(includeProperties: "Country").ToList();
             return View(customers);
         }
     }

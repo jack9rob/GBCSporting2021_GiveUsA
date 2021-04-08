@@ -10,21 +10,18 @@ namespace GBCSporting2021_GiveUsA.Controllers
 {
     public class IncidentController : Controller
     {
-        private TechnicalSupportContext context { get; set; }
+        UnitOfWork unitOfWork;
 
         public IncidentController(TechnicalSupportContext ctx)
         {
-            context = ctx;
+            unitOfWork = new UnitOfWork(ctx);
         }
 
         [HttpGet]
         [Route("incidents/{filter?}")]
         public IActionResult List(string filter = "all")
         {
-            IQueryable<Incident> incidents = context.Incidents
-                .Include(i => i.Product)
-                .Include(i => i.Customer)
-                .Include(i => i.Technician);
+            var incidents = unitOfWork.IncidentRepository.Get(includeProperties: "Product,Customer,Technician");
             if(filter == "unassigned")
             {
                 incidents = incidents.Where(i => i.TechnicianId == null);
@@ -42,9 +39,9 @@ namespace GBCSporting2021_GiveUsA.Controllers
         public IActionResult Add()
         {
             string action = "Add";
-            List<Customer> customers = context.Customers.OrderBy(c => c.Firstname).ToList();
-            List<Product> products = context.Products.OrderBy(p => p.Name).ToList();
-            List<Technician> technicians = context.Technicians.OrderBy(t => t.Name).ToList();
+            List<Customer> customers = unitOfWork.CustomerRepository.Get(orderBy: c => c.OrderBy(q => q.Firstname)).ToList();
+            List<Product> products = unitOfWork.ProductRepository.Get(orderBy: p => p.OrderBy(q => q.Name)).ToList();
+            List<Technician> technicians = unitOfWork.TechnicianRepository.Get(orderBy: t => t.OrderBy(q => q.Name)).ToList();
 
             IncidentViewModel vm = new IncidentViewModel
             {
@@ -61,15 +58,11 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("incidents/edit/{id}/{slug}")]
         public IActionResult Edit(int id)
         {
-            var incident = context.Incidents
-                .Include(i => i.Product)
-                .Include(i => i.Customer)
-                .Include(i => i.Technician)
-                .FirstOrDefault(i => i.IncidentId == id);
+            var incident = unitOfWork.IncidentRepository.Get(includeProperties: "Product,Customer,Technician").FirstOrDefault(i => i.IncidentId == id);
 
-            var customers = context.Customers.OrderBy(c => c.Firstname).ToList();
-            var products = context.Products.OrderBy(p => p.Name).ToList();
-            var technicians = context.Technicians.OrderBy(t => t.Name).ToList();
+            List<Customer> customers = unitOfWork.CustomerRepository.Get(orderBy: c => c.OrderBy(q => q.Firstname)).ToList();
+            List<Product> products = unitOfWork.ProductRepository.Get(orderBy: p => p.OrderBy(q => q.Name)).ToList();
+            List<Technician> technicians = unitOfWork.TechnicianRepository.Get(orderBy: t => t.OrderBy(q => q.Name)).ToList();
 
             IncidentViewModel vm = new IncidentViewModel
             {
@@ -83,7 +76,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         }
 
         [HttpPost]
-        [Route("incidents/edit/{id}/{slug}")]
+        [Route("incidents/edit/{id?}/{slug?}")]
         public IActionResult Edit(IncidentViewModel vm)
         {
 
@@ -92,15 +85,14 @@ namespace GBCSporting2021_GiveUsA.Controllers
             {
                 if(action == "Add")
                 {
-                    vm.CurrentIncident.DateOpened = DateTime.Now;
-                    context.Incidents.Add(vm.CurrentIncident);
+                    unitOfWork.IncidentRepository.Insert(vm.CurrentIncident);
                     TempData["message"] = vm.CurrentIncident.Title + " Added!";
                 } else
                 {
-                    context.Incidents.Update(vm.CurrentIncident);
+                    unitOfWork.IncidentRepository.Update(vm.CurrentIncident);
                     TempData["message"] = vm.CurrentIncident.Title + " Updated!";
                 }
-                context.SaveChanges();
+                unitOfWork.Save();
                 return RedirectToAction("List", "Incident");
             }else
             {
@@ -112,7 +104,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("incidents/delete/{id}/{slug}")]
         public IActionResult Delete(int id)
         {
-            var incident = context.Incidents.FirstOrDefault(i => i.IncidentId == id);
+            var incident = unitOfWork.IncidentRepository.GetByID(id);
             IncidentViewModel vm = new IncidentViewModel { CurrentIncident = incident, Action = "Delete" };
             return View(vm);
         }
@@ -121,9 +113,9 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("incidents/delete/{id}/{slug}")]
         public IActionResult Delete(IncidentViewModel vm)
         {
-            context.Incidents.Remove(vm.CurrentIncident);
+            unitOfWork.IncidentRepository.Delete(vm.CurrentIncident);
             TempData["message"] = vm.CurrentIncident.Title + " Deleted!";
-            context.SaveChanges();
+            unitOfWork.Save();
             return RedirectToAction("List", "Incident");
         }
     }

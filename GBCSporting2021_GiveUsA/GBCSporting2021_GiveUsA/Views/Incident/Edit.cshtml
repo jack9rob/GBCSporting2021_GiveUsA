@@ -8,11 +8,10 @@
     <div class="form-group">
         <label asp-for="CurrentIncident.CustomerId">Customer</label>
         <select asp-for="CurrentIncident.CustomerId" class="form-control" id="customerSelect">
-            <option value="" >Select a Customer</option>
+            <option value="">Select a Customer</option>
             @foreach (Customer c in Model.Customers)
             {
-                <option value="@c.CustomerId">@c.Firstname @c.Lastname</option>
-            }
+<option value="@c.CustomerId">@c.Firstname @c.Lastname</option>            }
         </select>
         <span asp-validation-for="CurrentIncident.CustomerId" class="text-danger"></span>
     </div>
@@ -23,7 +22,8 @@
             <option value="">Select a Product</option>
             @foreach (Product p in Model.Products)
             {
-    <option value="@p.ProductId">@p.Name</option>            }
+<option value="@p.ProductId">@p.Name</option>
+}
         </select>
         <span asp-validation-for="CurrentIncident.ProductId" class="text-danger"></span>
     </div>
@@ -46,8 +46,7 @@
             <option value="default">Select a Technician</option>
             @foreach (Technician t in Model.Technicians)
             {
-                <option value="@t.TechnicianId">@t.Name</option>
-            }
+<option value="@t.TechnicianId">@t.Name</option>            }
         </select>
     </div>
 
@@ -70,11 +69,11 @@
     </div>
 
     <input type="hidden" asp-for="CurrentIncident.IncidentId" />
-
     <input type="hidden" asp-for="Customers" />
     <input type="hidden" asp-for="Products" />
     <input type="hidden" asp-for="Technicians" />
     <input type="hidden" asp-for="Incidents" />
+    <input type="hidden" asp-for="Action" />
 
     <button type="submit" class="btn btn-primary">@Model.Action</button>
     <a asp-controller="Incident" asp-action="List" class="btn btn-primary">Cancel</a>
