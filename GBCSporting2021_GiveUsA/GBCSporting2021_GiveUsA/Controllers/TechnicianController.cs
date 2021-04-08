@@ -24,7 +24,6 @@ namespace GBCSporting2021_GiveUsA.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
             var technician = context.Technicians.FirstOrDefault(c => c.TechnicianId == id);
             return View(technician);
         }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GBCSporting2021_GiveUsA.Models.DataLayer;
 
 namespace GBCSporting2021_GiveUsA.Controllers
 {
@@ -48,7 +49,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 Customers = customers,
                 Products = products,
                 Technicians = technicians,
-                CurrentIncident = new Incident(),
+                CurrentIncident = new Incident { DateOpened = DateTime.Now },
                 Action = action
             };
             return View("Edit", vm);
@@ -96,6 +97,9 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 return RedirectToAction("List", "Incident");
             }else
             {
+                vm.Customers = unitOfWork.CustomerRepository.Get(orderBy: c => c.OrderBy(q => q.Firstname)).ToList();
+                vm.Products = unitOfWork.ProductRepository.Get(orderBy: p => p.OrderBy(q => q.Name)).ToList();
+                vm.Technicians = unitOfWork.TechnicianRepository.Get(orderBy: t => t.OrderBy(q => q.Name)).ToList();
                 return View(vm);
             }    
         }
@@ -104,7 +108,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("incidents/delete/{id}/{slug}")]
         public IActionResult Delete(int id)
         {
-            var incident = unitOfWork.IncidentRepository.GetByID(id);
+            var incident = unitOfWork.IncidentRepository.Get(id);
             IncidentViewModel vm = new IncidentViewModel { CurrentIncident = incident, Action = "Delete" };
             return View(vm);
         }

@@ -1,16 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GBCSporting2021_GiveUsA.Models.SeedData
+namespace GBCSporting2021_GiveUsA.Models.Config
+
 {
-    public static class CountryModelBuilderExtension
+    internal class CountryConfig : IEntityTypeConfiguration<Country>
     {
-        public static void SeedCountry(this ModelBuilder modelBuilder)
+        public void Configure(EntityTypeBuilder<Country> entity)
         {
-            modelBuilder.Entity<Country>().HasData(
+            entity.HasData(
                 new Country { CountryId = "CAD", Name = "Canada" },
                 new Country { CountryId = "USA", Name = "United States of America" },
                 new Country { CountryId = "KOR", Name = "Korea" },
@@ -18,7 +20,7 @@ namespace GBCSporting2021_GiveUsA.Models.SeedData
                 new Country { CountryId = "AUS", Name = "Australia" },
                 new Country { CountryId = "MEX", Name = "Mexico" },
                 new Country { CountryId = "UK", Name = "United Kingdom" }
-            );
+                );
         }
     }
 }

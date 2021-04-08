@@ -1,4 +1,4 @@
-﻿using GBCSporting2021_GiveUsA.Models.SeedData;
+﻿using GBCSporting2021_GiveUsA.Models.Config;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -18,8 +18,9 @@ namespace GBCSporting2021_GiveUsA.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.SeedCountry();
-            modelBuilder.Seed();            
+
+            modelBuilder.ApplyConfiguration(new CountryConfig());
+            modelBuilder.ApplyConfiguration(new ProductConfig());
         }
     }
 }

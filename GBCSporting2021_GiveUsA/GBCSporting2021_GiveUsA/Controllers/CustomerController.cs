@@ -1,4 +1,5 @@
 ﻿using GBCSporting2021_GiveUsA.Models;
+using GBCSporting2021_GiveUsA.Models.DataLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -78,7 +79,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("customers/delete/{id}/{slug}")]
         public IActionResult Delete(int id)
         {
-            var customer = unitOfWork.CustomerRepository.GetByID(id);
+            var customer = unitOfWork.CustomerRepository.Get(id);
             return View(customer);
         }
         [HttpPost]

@@ -46,7 +46,7 @@ namespace GBCSporting2021_GiveUsA.Models
                    City = "Toronto",
                    Province = "Ontario",
                    Postalcode = "M4B 1G5",
-                   Email = "jack.robinson@gmail.com",
+                   Email = "youngil@gmail.com",
                    Phone = "123-456-7899",
                    CountryId = "AUS"
                },
@@ -117,32 +117,6 @@ namespace GBCSporting2021_GiveUsA.Models
                }
            );
 
-            modelBuilder.Entity<Product>().HasData(
-                    new Product
-                    {
-                        ProductId = 1,
-                        Code = "MAC-AIR-M1",
-                        Name = "Macbook Air M1",
-                        Price = 1200,
-                        ReleaseDate = DateTime.Now
-                    },
-                    new Product
-                    {
-                        ProductId = 2,
-                        Code = "BLK-COF",
-                        Name = "Black Coffee",
-                        Price = 2.50,
-                        ReleaseDate = DateTime.Now
-                    },
-                    new Product
-                    {
-                        ProductId = 3,
-                        Code = "yoga-mat",
-                        Name = "Yoga Mat",
-                        Price = 10.00,
-                        ReleaseDate = DateTime.Now
-                    }
-                );
 
             modelBuilder.Entity<Technician>().HasData(
                     new Technician

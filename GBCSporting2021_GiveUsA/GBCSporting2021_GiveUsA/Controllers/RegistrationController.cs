@@ -5,16 +5,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using Microsoft.EntityFrameworkCore;
+using GBCSporting2021_GiveUsA.Models.DataLayer;
 
 namespace GBCSporting2021_GiveUsA.Controllers
 {
     public class RegistrationController : Controller
     {
-        public TechnicalSupportContext context { get; set; }
+        private UnitOfWork unitOfWork;
 
         public RegistrationController(TechnicalSupportContext ctx)
         {
-            context = ctx;
+            unitOfWork = new UnitOfWork(ctx);
         }
 
         [Route("registrations")]
@@ -27,9 +28,9 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 return RedirectToAction("GetCustomer");
             } 
             
-            var customer = context.Customers.FirstOrDefault(c => c.CustomerId == cid);
-            var products = context.Products.OrderBy(p => p.Code).ToList();
-            var registrations = context.Registrations.Where(r => r.CustomerId == cid).ToList();
+            var customer = unitOfWork.CustomerRepository.Get(cid);
+            var products = unitOfWork.ProductRepository.Get(orderBy: p => p.OrderBy(q => q.Name)).ToList();
+            var registrations = unitOfWork.RegistrationRepository.Get().Where(r => r.CustomerId == cid).ToList();
 
             var viewModel = new RegistrationViewModel { Customer = customer, Products = products, Registrations = registrations};
 
@@ -39,7 +40,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("getcustomer")]
         public IActionResult GetCustomer()
         {
-            ViewBag.Customers = context.Customers.OrderBy(c => c.Lastname).ToList();
+            ViewBag.Customers = unitOfWork.CustomerRepository.Get(orderBy: c => c.OrderBy(q => q.Lastname)).ToList();
             return View();
         }
 
@@ -57,18 +58,18 @@ namespace GBCSporting2021_GiveUsA.Controllers
         {
             var session = new RegistrationSession(HttpContext.Session);
             var cid = session.GetId();
-            string name = context.Products.FirstOrDefault(p => p.ProductId == id).Name;
+            string name = unitOfWork.ProductRepository.Get(id).Name;
 
             if (ModelState.IsValid)
             {
                 // check if product is already registered
-                if(context.Registrations.Where(r => r.ProductId == id).Where(r => r.CustomerId == cid).ToList().Count() != 0)
+                if(unitOfWork.RegistrationRepository.Get().Where(r => r.ProductId == id).Where(r => r.CustomerId == cid).ToList().Count() != 0)
                 {
                     TempData["message"] = name + " already registered";
                 } else
                 {
-                    context.Registrations.Add(new Registration { CustomerId = cid, ProductId = id });
-                    context.SaveChanges();
+                    unitOfWork.RegistrationRepository.Insert(new Registration { CustomerId = cid, ProductId = id });
+                    unitOfWork.RegistrationRepository.Save();
                     TempData["message"] = name + " Added!";
                 }
             }
@@ -79,7 +80,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("deleteregistration/{id}")]
         public IActionResult Delete(int id)
         {
-            var registration = context.Registrations.Include(r => r.Product).FirstOrDefault(registration => registration.RegistrationId == id);
+            var registration = unitOfWork.RegistrationRepository.Get(includeProperties: "Product").FirstOrDefault(registration => registration.RegistrationId == id);
             return View(registration);
         }
 
@@ -87,8 +88,8 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("deleteregistration/{id?}")]
         public IActionResult Delete(Registration registration)
         {
-            context.Registrations.Remove(registration);
-            context.SaveChanges();
+            unitOfWork.RegistrationRepository.Delete(registration);
+            unitOfWork.RegistrationRepository.Save();
             return RedirectToAction("Registrations");
         }
     }

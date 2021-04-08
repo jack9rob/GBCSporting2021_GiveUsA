@@ -1,4 +1,5 @@
 ﻿using GBCSporting2021_GiveUsA.Models;
+using GBCSporting2021_GiveUsA.Models.DataLayer;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,18 +10,18 @@ namespace GBCSporting2021_GiveUsA.Controllers
 {
     public class ProductController : Controller
     {
-        private TechnicalSupportContext context { get; set; }
+        private Repository<Product> repository;
 
         public ProductController(TechnicalSupportContext ctx)
         {
-            context = ctx;
+            repository = new Repository<Product>(ctx);
         }
 
         [HttpGet]
         [Route("products")]
         public IActionResult List()
         {
-            var products = context.Products.OrderBy(p => p.ReleaseDate).ToList();
+            var products = repository.Get(orderBy: p => p.OrderBy(q => q.ReleaseDate)).ToList();
             return View(products);
         }
 
@@ -37,13 +38,12 @@ namespace GBCSporting2021_GiveUsA.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            var product = context.Products
-                .FirstOrDefault(p => p.ProductId == id);
+            var product = repository.Get(id);
             return View(product);
         }
 
         [HttpPost]
-        [Route("products/edit/{id}/{slug}")]
+        [Route("products/edit/{id?}/{slug?}")]
         public IActionResult Edit(Product product)
         {
             string action = (product.ProductId == 0) ? "Add" : "Edit";
@@ -51,15 +51,15 @@ namespace GBCSporting2021_GiveUsA.Controllers
             {
                 if (action == "Add")
                 {
-                    context.Products.Add(product);
+                    repository.Insert(product);
                     TempData["message"] = product.Name + " Added!";
                 }
                 else
                 {
-                    context.Products.Update(product);
+                    repository.Update(product);
                     TempData["message"] = product.Name + " Updated!";
                 }
-                context.SaveChanges();
+                repository.Save();
                 return RedirectToAction("List", "Product");
             }
             else
@@ -73,7 +73,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("products/delete/{id}/{slug}")]
         public IActionResult Delete(int id)
         {
-            var product = context.Products.FirstOrDefault(p => p.ProductId == id);
+            var product = repository.Get(id);
             return View(product);
         }
 
@@ -81,9 +81,9 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("products/delete/{id}/{slug}")]
         public IActionResult Delete(Product product)
         {
-            context.Products.Remove(product);
+            repository.Delete(product);
             TempData["message"] = product.Name + " Deleted!";
-            context.SaveChanges();
+            repository.Save();
             return RedirectToAction("List", "Product");
         }
     }

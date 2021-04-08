@@ -383,3 +383,7 @@ D:\computer program study materials\Semester 4\GBCSporting2021_GiveUsA\GBCSporti
 D:\computer program study materials\Semester 4\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.dll
 D:\computer program study materials\Semester 4\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.pdb
 D:\computer program study materials\Semester 4\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\obj\Debug\netcoreapp3.1\GBCSporting2021_GiveUsA.genruntimeconfig.cache
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\bin\Debug\netcoreapp3.1\Microsoft.Azure.Amqp.dll
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\bin\Debug\netcoreapp3.1\Microsoft.Azure.Devices.dll
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\bin\Debug\netcoreapp3.1\Microsoft.Azure.Devices.Shared.dll
+S:\Web Application Development\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\GBCSporting2021_GiveUsA\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.dll

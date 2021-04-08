@@ -22,8 +22,8 @@
             <option value="">Select a Product</option>
             @foreach (Product p in Model.Products)
             {
-<option value="@p.ProductId">@p.Name</option>
-}
+                <option value="@p.ProductId">@p.Name</option>
+            }
         </select>
         <span asp-validation-for="CurrentIncident.ProductId" class="text-danger"></span>
     </div>
@@ -43,11 +43,13 @@
     <div class="form-group">
         <label asp-for="CurrentIncident.TechnicianId">Tehcnician</label>
         <select asp-for="CurrentIncident.TechnicianId" class="form-control" id="technicianSelect">
-            <option value="default">Select a Technician</option>
+            <option value="">Select a Technician</option>
             @foreach (Technician t in Model.Technicians)
             {
-<option value="@t.TechnicianId">@t.Name</option>            }
+    <option value="@t.TechnicianId">@t.Name</option>
+}
         </select>
+        <span asp-validation-for="CurrentIncident.TechnicianId" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -70,7 +72,7 @@
 
     <input type="hidden" asp-for="CurrentIncident.IncidentId" />
     <input type="hidden" asp-for="Customers" />
-    <input type="hidden" asp-for="Products" />
+    <input type="hidden" asp-for="Products" value="@Model.Products" />
     <input type="hidden" asp-for="Technicians" />
     <input type="hidden" asp-for="Incidents" />
     <input type="hidden" asp-for="Action" />
