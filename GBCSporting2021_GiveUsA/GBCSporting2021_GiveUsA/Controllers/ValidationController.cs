@@ -1,4 +1,5 @@
 ﻿using GBCSporting2021_GiveUsA.Models;
+using GBCSporting2021_GiveUsA.Models.DataLayer;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,18 +10,18 @@ namespace GBCSporting2021_GiveUsA.Controllers
 {
     public class ValidationController : Controller
     {
-        private TechnicalSupportContext context { get; set; }
+        private UnitOfWork unitOfWork;
 
         public ValidationController(TechnicalSupportContext ctx)
         {
-            context = ctx;
+            unitOfWork = new UnitOfWork(ctx);
         }
 
         [AcceptVerbs("GET", "POST")]
         public IActionResult CheckEmail(string email, int id)
         {
             bool result;
-            var customerCheck = context.Customers.Where(c => c.Email == email && c.CustomerId != id && c.Email != null).FirstOrDefault();
+            var customerCheck = unitOfWork.CustomerRepository.Get().Where(c => c.Email == email && c.CustomerId != id && c.Email != null).FirstOrDefault();
 
             if (customerCheck != null)
             {

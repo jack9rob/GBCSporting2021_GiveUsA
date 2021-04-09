@@ -149,7 +149,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Address = "123 Home Drive",
                             City = "Toronto",
                             CountryId = "AUS",
-                            Email = "jack.robinson@gmail.com",
+                            Email = "youngil@gmail.com",
                             Firstname = "Young-il",
                             Lastname = "Kim",
                             Phone = "123-456-7899",
@@ -270,7 +270,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateOpened = new DateTime(2021, 4, 8, 9, 43, 27, 500, DateTimeKind.Local).AddTicks(7524),
+                            DateOpened = new DateTime(2021, 4, 9, 19, 51, 44, 934, DateTimeKind.Local).AddTicks(3007),
                             Description = "Alex smashed by macbook because he was too jealous",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -280,7 +280,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateOpened = new DateTime(2021, 4, 8, 9, 43, 27, 500, DateTimeKind.Local).AddTicks(8856),
+                            DateOpened = new DateTime(2021, 4, 9, 19, 51, 44, 934, DateTimeKind.Local).AddTicks(4342),
                             Description = "Coffee spilled all over me",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -290,7 +290,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 3,
                             CustomerId = 3,
-                            DateOpened = new DateTime(2021, 4, 8, 9, 43, 27, 500, DateTimeKind.Local).AddTicks(8887),
+                            DateOpened = new DateTime(2021, 4, 9, 19, 51, 44, 934, DateTimeKind.Local).AddTicks(4373),
                             Description = "Wrong yoga mat was delivered to me",
                             ProductId = 3,
                             TechnicianId = 3,
@@ -330,7 +330,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "MAC-AIR-M1",
                             Name = "Macbook Air M1",
                             Price = 1200.0,
-                            ReleaseDate = new DateTime(2021, 4, 8, 9, 43, 27, 498, DateTimeKind.Local).AddTicks(6657)
+                            ReleaseDate = new DateTime(2021, 4, 9, 19, 51, 44, 932, DateTimeKind.Local).AddTicks(982)
                         },
                         new
                         {
@@ -338,7 +338,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "BLK-COF",
                             Name = "Black Coffee",
                             Price = 2.5,
-                            ReleaseDate = new DateTime(2021, 4, 8, 9, 43, 27, 500, DateTimeKind.Local).AddTicks(4174)
+                            ReleaseDate = new DateTime(2021, 4, 9, 19, 51, 44, 933, DateTimeKind.Local).AddTicks(8862)
                         },
                         new
                         {
@@ -346,7 +346,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "yoga-mat",
                             Name = "Yoga Mat",
                             Price = 10.0,
-                            ReleaseDate = new DateTime(2021, 4, 8, 9, 43, 27, 500, DateTimeKind.Local).AddTicks(4203)
+                            ReleaseDate = new DateTime(2021, 4, 9, 19, 51, 44, 933, DateTimeKind.Local).AddTicks(8896)
                         });
                 });
 
@@ -370,6 +370,26 @@ namespace GBCSporting2021_GiveUsA.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Registrations");
+
+                    b.HasData(
+                        new
+                        {
+                            RegistrationId = 1,
+                            CustomerId = 1,
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            RegistrationId = 2,
+                            CustomerId = 2,
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            RegistrationId = 3,
+                            CustomerId = 3,
+                            ProductId = 3
+                        });
                 });
 
             modelBuilder.Entity("GBCSporting2021_GiveUsA.Models.Technician", b =>

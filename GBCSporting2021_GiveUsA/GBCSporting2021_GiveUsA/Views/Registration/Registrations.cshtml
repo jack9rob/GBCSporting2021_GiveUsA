@@ -8,28 +8,40 @@
 <h1>Customer: @Model.Customer.Firstname @Model.Customer.Lastname</h1>
 
 <form asp-action="GetCustomer">
-    <button type="submit">Switch Customer</button>
+    <button class="btn btn-primary" type="submit">Switch Customer</button>
 </form>
 
 <h1>Registrations</h1>
 @if (Model.Registrations.Count != 0)
 {
-    <table>
-        <thead>Products</thead>
+<div class="table-responsive-lg">
+    <table class="table table-striped">
+        <thead>Products
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Release Date</th>
+                <th>Price</th>
+                <th>Option</th>
+            </tr>
+        </thead>
         <tbody>
             @foreach (Registration r in Model.Registrations)
             {
-                <tr>
-                    <td>@r.Product.Name</td>
-                    <td>
-                        <a asp-action="Delete" asp-route-id="@r.RegistrationId" class="btn btn-primary">Delete</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>@r.Product.Name</td>
+                <td>@r.Product.Code</td>
+                <td>@r.Product.ReleaseDate</td>
+                <td>@r.Product.Price</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@r.RegistrationId" class="btn btn-primary mt-2">Delete</a>
+                </td>
+            </tr>
 
             }
         </tbody>
     </table>
-
+</div>
 }
 else
 {
@@ -46,5 +58,5 @@ else
             <option value="@p.ProductId">@p.Name</option>
         }
     </select>
-    <button type="submit">Register</button>
+    <button class="btn btn-primary mt-2" type="submit">Register</button>
 </form>

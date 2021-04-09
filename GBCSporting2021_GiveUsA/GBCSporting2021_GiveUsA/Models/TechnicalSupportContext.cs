@@ -24,6 +24,7 @@ namespace GBCSporting2021_GiveUsA.Models
             modelBuilder.ApplyConfiguration(new IncidentConfig());
             modelBuilder.ApplyConfiguration(new CustomerConfig());
             modelBuilder.ApplyConfiguration(new TechnicianConfig());
+            modelBuilder.ApplyConfiguration(new RegistrationConfig());
         }
     }
 }

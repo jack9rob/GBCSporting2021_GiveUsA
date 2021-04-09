@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSporting2021_GiveUsA.Migrations
 {
     [DbContext(typeof(TechnicalSupportContext))]
-    [Migration("20210407212444_new-initial")]
-    partial class newinitial
+    [Migration("20210409235145_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -151,7 +151,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Address = "123 Home Drive",
                             City = "Toronto",
                             CountryId = "AUS",
-                            Email = "jack.robinson@gmail.com",
+                            Email = "youngil@gmail.com",
                             Firstname = "Young-il",
                             Lastname = "Kim",
                             Phone = "123-456-7899",
@@ -272,7 +272,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 1,
                             CustomerId = 1,
-                            DateOpened = new DateTime(2021, 4, 7, 17, 24, 43, 702, DateTimeKind.Local).AddTicks(2295),
+                            DateOpened = new DateTime(2021, 4, 9, 19, 51, 44, 934, DateTimeKind.Local).AddTicks(3007),
                             Description = "Alex smashed by macbook because he was too jealous",
                             ProductId = 1,
                             TechnicianId = 1,
@@ -282,7 +282,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 2,
                             CustomerId = 2,
-                            DateOpened = new DateTime(2021, 4, 7, 17, 24, 43, 702, DateTimeKind.Local).AddTicks(4601),
+                            DateOpened = new DateTime(2021, 4, 9, 19, 51, 44, 934, DateTimeKind.Local).AddTicks(4342),
                             Description = "Coffee spilled all over me",
                             ProductId = 2,
                             TechnicianId = 3,
@@ -292,7 +292,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                         {
                             IncidentId = 3,
                             CustomerId = 3,
-                            DateOpened = new DateTime(2021, 4, 7, 17, 24, 43, 702, DateTimeKind.Local).AddTicks(4651),
+                            DateOpened = new DateTime(2021, 4, 9, 19, 51, 44, 934, DateTimeKind.Local).AddTicks(4373),
                             Description = "Wrong yoga mat was delivered to me",
                             ProductId = 3,
                             TechnicianId = 3,
@@ -332,7 +332,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "MAC-AIR-M1",
                             Name = "Macbook Air M1",
                             Price = 1200.0,
-                            ReleaseDate = new DateTime(2021, 4, 7, 17, 24, 43, 697, DateTimeKind.Local).AddTicks(6328)
+                            ReleaseDate = new DateTime(2021, 4, 9, 19, 51, 44, 932, DateTimeKind.Local).AddTicks(982)
                         },
                         new
                         {
@@ -340,7 +340,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "BLK-COF",
                             Name = "Black Coffee",
                             Price = 2.5,
-                            ReleaseDate = new DateTime(2021, 4, 7, 17, 24, 43, 701, DateTimeKind.Local).AddTicks(5174)
+                            ReleaseDate = new DateTime(2021, 4, 9, 19, 51, 44, 933, DateTimeKind.Local).AddTicks(8862)
                         },
                         new
                         {
@@ -348,7 +348,7 @@ namespace GBCSporting2021_GiveUsA.Migrations
                             Code = "yoga-mat",
                             Name = "Yoga Mat",
                             Price = 10.0,
-                            ReleaseDate = new DateTime(2021, 4, 7, 17, 24, 43, 701, DateTimeKind.Local).AddTicks(5230)
+                            ReleaseDate = new DateTime(2021, 4, 9, 19, 51, 44, 933, DateTimeKind.Local).AddTicks(8896)
                         });
                 });
 
@@ -372,6 +372,26 @@ namespace GBCSporting2021_GiveUsA.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Registrations");
+
+                    b.HasData(
+                        new
+                        {
+                            RegistrationId = 1,
+                            CustomerId = 1,
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            RegistrationId = 2,
+                            CustomerId = 2,
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            RegistrationId = 3,
+                            CustomerId = 3,
+                            ProductId = 3
+                        });
                 });
 
             modelBuilder.Entity("GBCSporting2021_GiveUsA.Models.Technician", b =>
