@@ -40,6 +40,7 @@ namespace GBCSporting2021_GiveUsA.Models
         [Remote("CheckEmail", "Validation", AdditionalFields = "CustomerId", ErrorMessage = "Email already in use")]
         public string Email { get; set; } // optional
 
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; } // optional
 
         public string Slug => Firstname?.Replace(" ", "-").ToLower() + "-" + Lastname?.Replace(" ", "-").ToLower();

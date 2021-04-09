@@ -19,25 +19,25 @@
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-light" : "")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Product" asp-action="List">Products</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Product" ? "text-light" : "")" asp-area="" asp-controller="Product" asp-action="List">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Technician" asp-action="List">Technicians</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Technician" ? "text-light" : "")" asp-area="" asp-controller="Technician" asp-action="List">Technicians</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Customer" asp-action="List">Customers</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Customer" ? "text-light" : "")" asp-area="" asp-controller="Customer" asp-action="List">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Incident" asp-action="List">Incidents</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Incident" ? "text-light" : "")" asp-area="" asp-controller="Incident" asp-action="List">Incidents</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Registrations" asp-action="Index">Registration</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Registration" ? "text-light" : "")" asp-area="" asp-controller="Registrations" asp-action="Index">Registration</a>
                         </li>
                         <li class="nav-item ml-auto">
-                            <a class="nav-link text-light" asp-controller="Home" asp-action="About">About</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "About" ? "text-light" : "")" asp-controller="Home" asp-action="About">About</a>
                         </li>
                     </ul>
                 </div>
@@ -66,6 +66,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/jquery.mask.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

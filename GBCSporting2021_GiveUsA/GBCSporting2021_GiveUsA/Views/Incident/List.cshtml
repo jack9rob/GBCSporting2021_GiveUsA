@@ -3,10 +3,10 @@
     ViewBag.Title = "Incident Manager";
 }
 
-<a class="btn btn-sm text-primary" asp-action="List" asp-route-filter="all">All</a>
-<a class="btn btn-sm bg-primary text-light" asp-action="List" asp-route-filter="open">Open</a>
-<a class="btn btn-sm text-primary" asp-action="List" asp-route-filter="unassigned">Unassigned</a>
-<h1>Incidents | @Model.Filter</h1>
+<a class="btn btn-sm text-@(Model.Filter == "all" ? "light" : "primary") @(Model.Filter == "all" ? "bg-primary" : "")" asp-action="List" asp-route-filter="all">All</a>
+<a class="btn btn-sm text-@(Model.Filter == "open" ? "light" : "primary") @(Model.Filter == "open" ? "bg-primary" : "")" asp-action="List" asp-route-filter="open">Open</a>
+<a class="btn btn-sm text-@(Model.Filter == "unassigned" ? "light" : "primary") @(Model.Filter == "unassigned" ? "bg-primary" : "")" asp-action="List" asp-route-filter="unassigned">Unassigned</a>
+<h1>Incidents</h1>
 
 <table class="table table-bordered table-striped">
     <thead>
