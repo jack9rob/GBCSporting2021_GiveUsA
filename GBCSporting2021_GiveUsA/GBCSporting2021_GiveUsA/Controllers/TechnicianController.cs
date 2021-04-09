@@ -1,4 +1,5 @@
 ﻿using GBCSporting2021_GiveUsA.Models;
+using GBCSporting2021_GiveUsA.Models.DataLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -7,10 +8,10 @@ namespace GBCSporting2021_GiveUsA.Controllers
 {
     public class TechnicianController : Controller
     {
-        public TechnicalSupportContext context { get; set; }
+        private Repository<Technician> repository;
         public TechnicianController(TechnicalSupportContext ctx)
         {
-            context = ctx;
+            repository = new Repository<Technician>(ctx);
         }
         [HttpGet]
         [Route("technicians/add/")]
@@ -24,27 +25,27 @@ namespace GBCSporting2021_GiveUsA.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            var technician = context.Technicians.FirstOrDefault(c => c.TechnicianId == id);
+            var technician = repository.Get(id);
             return View(technician);
         }
         [HttpPost]
-        [Route("technicians/edit/{id}/{slug}")]
+        [Route("technicians/edit/{id?}/{slug?}")]
         public IActionResult Edit(Technician technician)
         {
             if (ModelState.IsValid)
             {
                 if (technician.TechnicianId == 0)
                 {
-                    context.Technicians.Add(technician);
+                    repository.Insert(technician);
                     TempData["message"] = technician.Name + " Added!";
                 }
 
                 else
                 {
-                    context.Technicians.Update(technician);
+                    repository.Update(technician);
                     TempData["message"] = technician.Name + " Updated!";
                 }
-                context.SaveChanges();
+                repository.Save();
                 return RedirectToAction("List", "Technician");
             }
             else
@@ -57,22 +58,22 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("technicians/delete/{id}/{slug}")]
         public IActionResult Delete(int id)
         {
-            var Technician = context.Technicians.Find(id);
+            var Technician = repository.Get(id);
             return View(Technician);
         }
         [HttpPost]
         [Route("technicians/delete/{id}/{slug}")]
         public IActionResult Delete(Technician technician)
         {
-            context.Technicians.Remove(technician);
+            repository.Delete(technician);
             TempData["message"] = technician.Name + " Deleted!";
-            context.SaveChanges();
+            repository.Save();
             return RedirectToAction("List", "Technician");
         }
         [Route("technicians")]
         public IActionResult List()
         {
-            var technician = context.Technicians.ToList();
+            var technician = repository.Get(orderBy: t => t.OrderBy(q => q.Name)).ToList();
             return View(technician);
         }
     }

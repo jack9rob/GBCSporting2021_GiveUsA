@@ -1,4 +1,5 @@
 ﻿using GBCSporting2021_GiveUsA.Models;
+using GBCSporting2021_GiveUsA.Models.DataLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,11 +12,11 @@ namespace GBCSporting2021_GiveUsA.Controllers
     public class TechIncidentController : Controller
     {
 
-        public TechnicalSupportContext context { get; set; }
+        private UnitOfWork unitOfWork;
 
         public TechIncidentController(TechnicalSupportContext ctx)
         {
-            context = ctx;
+            unitOfWork = new UnitOfWork(ctx);
         }
 
         [Route("tech_incident")]
@@ -28,19 +29,15 @@ namespace GBCSporting2021_GiveUsA.Controllers
                 return RedirectToAction("SelectTechnician");
             }
 
-            var incidents = context.Incidents.
-                Include(i => i.Technician).
-                Include(i => i.Customer).
-                Include(i => i.Product).
-                Where(i => i.TechnicianId == tid).
-                Where(i => i.DateClosed == null).
-                ToList();
+            var incidents = unitOfWork.IncidentRepository.Get(includeProperties: "Technician,Customer,Product").Where(i => i.TechnicianId == tid).
+                Where(i => i.DateClosed == null).ToList();
+            ViewBag.Name = unitOfWork.TechnicianRepository.Get(tid).Name;
             return View(incidents);
         }
         [Route("get-technician")]
         public IActionResult SelectTechnician()
         {
-            var technicians = context.Technicians.OrderBy(t => t.Name).ToList();
+            var technicians = unitOfWork.TechnicianRepository.Get(orderBy: t => t.OrderBy(q => q.Name)).ToList();
             return View(technicians);
         }
 
@@ -57,11 +54,7 @@ namespace GBCSporting2021_GiveUsA.Controllers
         [Route("technician-incident/edit/{id}/{slug}")]
         public IActionResult Edit(int id)
         {
-            var incident = context.Incidents.
-                Include(i => i.Technician).
-                Include(i => i.Customer).
-                Include(i => i.Product).
-                Where(i => i.IncidentId == id).FirstOrDefault();
+            var incident = unitOfWork.IncidentRepository.Get(includeProperties: "Technician,Customer,Product").Where(i => i.IncidentId == id).FirstOrDefault();
             return View(incident);
         }
 
@@ -71,8 +64,8 @@ namespace GBCSporting2021_GiveUsA.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Incidents.Update(incident);
-                context.SaveChanges();
+                unitOfWork.IncidentRepository.Update(incident);
+                unitOfWork.Save();
                 return RedirectToAction("List", "TechIncident");
             }
             else
