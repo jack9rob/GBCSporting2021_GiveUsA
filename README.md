@@ -1,5 +1,5 @@
 # comp2139-assignment1
-Assignment 1 - sporting technical support website
+Technical Support Website
 ![sample image](https://github.com/jack9rob/GBCSporting2021_GiveUsA/blob/main/screenshots/technicalsupport.png?raw=true)
 ![sample image](https://github.com/jack9rob/GBCSporting2021_GiveUsA/blob/main/screenshots/FireShot%20Capture%20078%20-%20Registrations%20-%20localhost.png?raw=true)
 ![sample image](https://github.com/jack9rob/GBCSporting2021_GiveUsA/blob/main/screenshots/technicalsupportTechnician%20-%20localhost.png?raw=true)
